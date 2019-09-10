@@ -31,7 +31,7 @@ export default {
         }
     },
     created(){
-/*          alert(window.screen.width)
+/*         alert(window.screen.width)
         alert(window.screen.height)  */
         //创建地图实例
         var map = new BMap.Map("allmap", {enableMapClick:false})
