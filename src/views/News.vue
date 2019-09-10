@@ -3,7 +3,7 @@
           <van-nav-bar title="" left-text="wad" fixed >
     <van-icon name="cross" slot="left"  @click="location" />
     </van-nav-bar>
-   <div v-if="list.new && list.new.info" class="item" v-html="list.new.info"></div>
+   <div v-if="list.new" class="item" v-html="list.new.info"></div>
     <fenxiang></fenxiang>
         <abc></abc> 
     </div>
@@ -12,14 +12,16 @@
 import fenxiang from '../components/fenxiang'
 import abc from '../components/text'
 export default {
+    name:'News',
     data(){
         return{
             list:[],
-            id:""
+            id:"",
         }
     },
     created(){
-     this.id=this.$route.params.id
+        this.id=this.$route.params.id
+        this.$store.commit("msg",this.id)
         this.msg()
     },methods:{
          location(){
@@ -30,11 +32,12 @@ export default {
             var data={token:this.id}
             this.axios.post(url,data).then(result=>{
                 this.list=result.data.data
+                console.log(result)
             })
         }
+    },mounted(){
     },
     components:{
-     /*   touchBar, */
        fenxiang,
        abc 
     }

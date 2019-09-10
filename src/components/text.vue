@@ -49,9 +49,9 @@
         <div class="d1" @click="show = !show">
             <transition>
             <div v-show="!show">
-    <router-link to="/">
+            <router-link to="/">
                 <p>首页</p>
-    </router-link>
+            </router-link>
                 </div>
             </transition>
             <div><img src="../../img/主页绿.png" alt=""></div>
@@ -125,7 +125,7 @@ export default {
                 width: 1.3rem;
                 box-shadow:#B2B2B2 0 0 5px 1px;
                 border-radius: 50%;
-                margin-right:0.4rem;
+                margin-right:0.55rem;
             img{
                 width: 1.3rem;
             }
@@ -139,7 +139,9 @@ export default {
         width:100%;
         height: 1.3rem;
         display: flex;
-        justify-content: space-between;
+        /* justify-content: space-between; */
+        position: fixed;
+        top: 15rem;
         div{
             width: 45%;
             height:1.3rem;
@@ -163,7 +165,7 @@ export default {
                 box-shadow:#B2B2B2 0 0 5px 1px;
                 border-radius: 50%;
                 position: fixed;
-                right: 0.6rem;
+                right: 0.75rem;
             img{
                 width: 1.3rem;
             }

@@ -11,6 +11,7 @@ import scoll from './components/scoll'
 import Equipment from './views/Equipment'
 import eqMsg from './views/eqMsg'
 import News from './views/News'
+import fenxiangNew from './components/fenxiangNew'
 
 
 Vue.use(Router)
@@ -48,7 +49,8 @@ export default new Router({
     {
       path: '/fenxiang',
       name: 'fenxiang',
-      component: fenxiang
+      component: fenxiang,
+      props:true
     },
     {
       path: '/text',
@@ -73,7 +75,14 @@ export default new Router({
     {
       path: '/News',
       name: 'News',
-      component: News
+      component: News,
+      props:true
+    },
+    {
+      path: '/fenxiangNew',
+      name: 'fenxiangNew',
+      component: fenxiangNew,
+      props:true
     }
   ],
   linkActiveClass: 'active',

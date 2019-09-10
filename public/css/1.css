@@ -6,7 +6,7 @@ a{
     color: #333333;
 } 
 .van-nav-bar{
-    height: 40px !important;
+    height: 40px !important;line-height: 40px !important;
 }
 .van-nav-bar .van-icon{
     color: #000000 !important;

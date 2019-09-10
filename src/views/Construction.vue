@@ -4,12 +4,11 @@
     <van-icon name="cross" slot="left"  @click="location" />
     </van-nav-bar>
         <div class="video">
-             <video  controls :src="'http://js.vrccn.com/' + list.img"></video>
+             <video  controls :src="'http://js.vrccn.com/' + list.url"></video>
         </div>
         <div class="box">
             <div v-html="list.info"></div>
         </div>
-        <fenxiang></fenxiang>
         <abc></abc>
     </div>
 </template>
@@ -33,6 +32,7 @@ export default {
             var url="/getProject"
             this.axios.post(url).then(result=>{
                 this.list=result.data.data
+                console.log(result.data.data)
             })
         }
     },

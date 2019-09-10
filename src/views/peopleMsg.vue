@@ -14,7 +14,7 @@
             </div>
             <div class="item2">
                 <img src="../../img/手机.png" alt="">
-                <span>136 5568 7465</span>
+                <span>{{elem.phone}}</span>
             </div>
             <div class="item2">
                 <img src="../../img/邮箱.png" alt="">
@@ -31,7 +31,6 @@
         </div>
         <!-- 引入子组件 -->
         <abc></abc>
-        <fenxiang></fenxiang>
     </div>
 </template>
 <script>

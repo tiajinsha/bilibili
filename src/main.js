@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import 'vant/lib/index.css';
 import Vant from 'vant';
-import axios from "../axios"
+import axios from "./axios"
 Vue.use(Vant);
 
 Vue.config.productionTip = false

@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
+    "inspector": "^0.5.0",
     "jsonp": "^0.2.1",
     "vant": "^2.1.8",
     "vue": "^2.6.10",

@@ -1,7 +1,6 @@
 <template>
     <div>
-        <van-nav-bar title="首页" left-text="wad" fixed >
-        <van-icon name="cross" slot="left"  @click="location" />
+        <van-nav-bar title="首页" left-text="" fixed >
         </van-nav-bar>
         <div style="" class="index">
         <img  src="../../img/矩形 10.png" alt="">
@@ -18,7 +17,6 @@
          <baidu-map  :center="center" :zoom="zoom" @ready="handler" class="map"></baidu-map>
         </div>
         <scoll></scoll>
-        <fenxiang></fenxiang>
     </div>
 </template>
 <script>
@@ -33,6 +31,8 @@ export default {
         }
     },
     created(){
+/*          alert(window.screen.width)
+        alert(window.screen.height)  */
         //创建地图实例
         var map = new BMap.Map("allmap", {enableMapClick:false})
         this.postGet()
@@ -74,6 +74,7 @@ export default {
     height: 12rem;
     position: fixed;
     opacity: 0.6;
+    top:5.78rem;
           width: 100%;  
     .map{
         width: 100%;
@@ -107,13 +108,13 @@ export default {
         .lastView{
             p:nth-child(1){
                 font-weight: bold;
-                font-size: 0.4rem;
+                font-size:15px;
                 color:#FFFFFF;
                 font-family: PingFang-SC-Bold;
                 margin-top: 0.1rem;
             }
             p:nth-child(2){
-                font-size: 0.1rem;
+                font-size:5px;
                 font-family: PingFang-SC-Bold;
                 color:#FFFFFF;
             }

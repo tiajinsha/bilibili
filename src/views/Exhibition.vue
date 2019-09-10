@@ -4,7 +4,6 @@
           <van-icon name="cross" slot="left"   @click="location" />
           </van-nav-bar>
      <div v-html="list.info"></div>
-      <fenxiang></fenxiang>
         <abc></abc>
     </div>
 </template>

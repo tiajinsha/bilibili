@@ -28,7 +28,6 @@
             <img src="../../img/03258picfm4pv1nbpja23_pic2018-2.png" alt="">
         </div>
              <abc></abc>
-             <fenxiang></fenxiang>
     </div>
 </template>
 <script>

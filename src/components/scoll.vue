@@ -1,7 +1,7 @@
 <template>
     <div class="elem">
         <div class="d1"></div>
-        <div class="box">-
+        <div class="box">
            <!--  // -->
            <router-link v-for="(elem,i) of data" :key="i" :to="elem.to">
             <div v-if="i==0 || i%2==0" class="img_left">
@@ -78,7 +78,7 @@ img{
 }
 .d1{
     position: fixed;
-    left: 49.7%;
+    left: 50.2%;
     width: 2px;
     height:100vh;
     background: #01589F;
@@ -96,6 +96,7 @@ img{
         position: absolute;
         top: 0px;
         overflow-y: auto;
+        overflow-x: hidden;
         div:last-child{
             margin-bottom: 0.5rem;
         }
@@ -104,13 +105,13 @@ img{
 }
 /* 滑块 */
 .img_left{
-    width: 4.8rem;
+ /*    width: 4.8rem; */
     height: 1rem;
     position: relative;
     margin-top: 1rem;
     i{
-        width: 0.2rem;
-        height: 0.2rem;
+        width: 0.3rem;
+        height: 0.3rem;
         border-radius: 50%;
         background: white;
         display: inline-block;
@@ -139,7 +140,8 @@ img{
             color: white;
             line-height: 1rem;
             text-align: center;
-
+            display: inline-block;
+            margin-right: 3.7rem;
         }
     }
     img{
@@ -149,7 +151,7 @@ img{
 }
 /* =============================================== */
 .img_right{
-    width:4.7rem;
+   /*  width:4.7rem; */
     height: 1rem;
     position: relative;
     left: 4.2rem;
@@ -161,8 +163,8 @@ img{
         margin-left: 10px;
     }
     i{
-        width: 0.2rem;
-        height: 0.2rem;
+        width: 0.3rem;
+        height: 0.3rem;
         border-radius: 50%;
         background: white;
         display: inline-block;
@@ -182,7 +184,7 @@ img{
         img{
             width: 0.6rem;
             height: 0.6rem;
-            margin-right: 0.5rem;
+            margin-right: 0.3rem;
         }
         span{
             width: 3rem;

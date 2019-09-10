@@ -4,20 +4,40 @@
             <img src="../../img/分享 拷贝.png" alt="">
           </div>
         <van-popup v-model="show">
-            <img style="width:50%;height:50%;" src="../../img/p46201558.jpg" alt="">
+            <img style="width:50%;height:50%;" :src="img" alt="">
         </van-popup>
+        <div>{{message}}</div>
     </div>
 </template>
 <script>
 export default {
+    name:'fenxiang',
+    props:["message"],
     data(){
         return{
-            show:false
+            show:false,
+            img:"",
+            id:""
         }
-    },methods:{
+      },methods:{
            showPopup() {
                this.show = true;
        },
+       list(){
+           this.id=this.$store.state.msg
+           var url="/getCode"
+           var obj={url:"#/fenxiangNew",id:this.id}
+           this.axios.get(url,{params:obj}).then(result=>{
+            this.img=result.data
+              console.log(result)
+           })
+       }
+    },
+    created(){
+        this.list()
+        console.log(this.id)
+    },watch:{
+
     }
 }
 </script>
