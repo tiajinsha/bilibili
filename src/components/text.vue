@@ -97,7 +97,6 @@ export default {
           opacity: 0;
         }
         ul{
-        margin-top: 0.1rem;
              white-space: nowrap;
             list-style: none;
             li{
@@ -134,7 +133,6 @@ export default {
         }
     }
     .d1{
-        margin-top:0.1rem;
         margin-bottom: 0.1rem;
         width:100%;
         height: 1.3rem;

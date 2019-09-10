@@ -52,6 +52,8 @@ export default {
             margin-top: 1.2rem;
             color: #333333;
             font-size:0.4rem;
+            text-indent:0.5rem;
+            letter-spacing: 4px;
         }
     }
 </style>

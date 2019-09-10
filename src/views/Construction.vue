@@ -60,7 +60,6 @@ export default {
                 text-align: left;
                 text-indent:0.5rem;
                 letter-spacing: 4px;
-                line-height: 19px;
                 font-size: 0.4rem;
                 margin-bottom:0.5rem;
                 color: #333333;

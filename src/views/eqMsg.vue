@@ -3,7 +3,7 @@
     <van-nav-bar title="组要设备" left-text="wad" fixed >
     <van-icon name="cross" slot="left"  @click="location" />
     </van-nav-bar>
-        <div v-html="list.info"></div>
+        <div class="item" v-html="list.info"></div>
         <abc></abc>
     </div>
 </template>
@@ -41,9 +41,11 @@ export default {
         width:90%;
         height:500px;
         margin: 0 auto;
-        div{
+        .item{
             color: #333333;
             font-size:0.4rem;
+              text-indent:0.5rem;
+             letter-spacing: 4px;
         }
     }
 </style>
