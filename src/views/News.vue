@@ -25,9 +25,16 @@ export default {
         }
     },
     created(){
-        this.id=this.$route.params.id
-        this.$store.commit("msg",this.id)
-        this.msg()
+        if(this.$route.params.id==undefined || this.$route.params.id.length==0){
+            this.id=sessionStorage.getItem("id")
+            this.msg()
+        }else{
+            this.id=this.$route.params.id
+            this.$store.commit("msg",this.id)
+            sessionStorage.setItem("id",this.id)
+            this.msg()
+        }
+            
     },methods:{
         loadMore(id){
             var url="/getNews"
@@ -47,14 +54,15 @@ export default {
             })
         }
     },mounted(){
+
+    },
+    destroyed: function () {
+        sessionStorage.removeItem("id");
     },
     components:{
        fenxiang,
        abc 
     }
-    /* localStorage.setItem("lastname", "Smith");
-// 检索
-document.getElementById("result").innerHTML = localStorage.getItem("lastname"); */
 }
 </script>
 <style lang="scss" scoped>
