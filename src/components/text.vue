@@ -10,45 +10,45 @@
                     <p>项目总体介绍</p>
                 </div>
                 <div>
-                     <img src="../../img/项目 (1).png" alt="">
+                     <img src="../assets/img/项目 (1).png" alt="">
                 </div>
             </li>
             </router-link>
             <router-link to="/introduce">
             <li>
                  <div>  <p>建设内容</p></div>
-                <div><img src="../../img/建设.png" alt=""></div>
+                <div><img src="../assets/img/建设.png" alt=""></div>
             </li>
             </router-link>
             <router-link to="/Equipment">
             <li>
                  <div><p>组织架构</p></div>
-                <div><img src="../../img/组织.png" alt=""></div>
+                <div><img src="../assets/img/组织.png" alt=""></div>
             </li>
             </router-link>
             <router-link to="/Exhibition">
             <li>
                  <div><p>党建引领</p></div>
-                <div><img src="../../img/党.png" alt=""></div>
+                <div><img src="../assets/img/党.png" alt=""></div>
             </li>
             </router-link>
             <router-link to="/eqMsg">
             <li>
                  <div><p>主要设备信息</p></div>
-                <div><img src="../../img/设备.png" alt=""></div>
+                <div><img src="../assets/img/设备.png" alt=""></div>
             </li>
             </router-link>
             <router-link to="/peopleMsg">
             <li>
                  <div><p>主要人员信息</p></div>
-                <div><img src="../../img/团队建设.png" alt=""></div>
+                <div><img src="../assets/img/团队建设.png" alt=""></div>
             </li>
             </router-link>
             </ul>
             </transition>
             <li style="margin-top:3px;">
                 <div class="yinchang"><p>首页</p></div>
-                <div @click="show = !show"><img src="../../img/主页绿.png" alt=""></div>
+                <div @click="show = !show"><img src="../assets/img/主页绿.png" alt=""></div>
             </li>
         </ul>
     </div>
@@ -65,10 +65,14 @@ export default {
         }
     },
     methods:{
-        
+        getScroll(){
+            this.show=true;
+        }
     },
     mounted(){
-        this.show=true 
+        this.show=true
+        window.addEventListener('scroll', this.getScroll);
+
     }
 }
 </script>
@@ -89,7 +93,7 @@ export default {
         position: fixed;
         left: 4.9rem;
         width: 5rem;
-        z-index: 1000;
+        z-index:500;
         bottom: 1rem;
     .text{
         width:5rem;;

@@ -13,19 +13,19 @@
                 <div :style="{backgroundImage:`url(http://js.vrccn.com/${elem.url})`}"></div>
             </div>
             <div class="item2">
-                <img src="../../img/手机.png" alt="">
+                <img src="../assets/img/手机.png" alt="">
                 <span>{{elem.phone}}</span>
             </div>
             <div class="item2">
-                <img src="../../img/邮箱.png" alt="">
+                <img src="../assets/img/邮箱.png" alt="">
                 <span>{{elem.email}}</span>
             </div>
             <div class="item2">
-                <img src="../../img/公司名称.png" alt="">
+                <img src="../assets/img/公司名称.png" alt="">
                 <span>{{elem.gs}}</span>
             </div>
             <div class="item2">
-                <img src="../../img/地址.png" alt="">
+                <img src="../assets/img/地址.png" alt="">
                 <span>{{elem.info}}</span>
             </div>
         </div>

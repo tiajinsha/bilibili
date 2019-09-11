@@ -20,7 +20,6 @@ export default {
             var data={token:id}
             this.axios.post(url,data).then(result=>{
                 this.list=result.data.data
-                console.log(result)
             })
         }
     },mounted(){

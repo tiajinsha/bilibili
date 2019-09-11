@@ -9,12 +9,12 @@
                            <img :src="elem.img"  alt="">
                            <span>{{elem.msg}}</span>
                 </div>
-                <img src="../../img/b75a3b592b4fe86522c32e31486d7f6.png" alt="">
+                <img src="../assets/img/b75a3b592b4fe86522c32e31486d7f6.png" alt="">
                 <i></i> 
             </div>
            <div v-else class="img_right">
                 <i></i>
-                <img class="img1" src="../../img/b75a3b592b4fe86522c32e31486d7f6.png" alt="">
+                <img class="img1" src="../assets/img/b75a3b592b4fe86522c32e31486d7f6.png" alt="">
                 <div class="title">
                     <span>{{elem.msg}}</span>
                        <img :src="elem.img"  alt="">
@@ -28,12 +28,12 @@
                           <img :src="'http://js.vrccn.com/'+ item.url" alt="">
                             <span>{{item.name}}</span>
                 </div>
-                <img src="../../img/b75a3b592b4fe86522c32e31486d7f6.png" alt="">
+                <img src="../assets/img/b75a3b592b4fe86522c32e31486d7f6.png" alt="">
                 <i></i> 
             </div>
             <div v-else class="img_right">
                 <i></i>
-                <img class="img1" src="../../img/b75a3b592b4fe86522c32e31486d7f6.png" alt="">
+                <img class="img1" src="../assets/img/b75a3b592b4fe86522c32e31486d7f6.png" alt="">
                 <div class="title">
                     <span>{{item.name}}</span>
                        <img :src="'http://js.vrccn.com/'+ item.url"  alt="">
@@ -48,12 +48,12 @@ export default {
     data(){
         return {
             data:[
-                {img:require('../../img/团队建设.png'),msg:"项目总体介绍",to:'/Construction'},
-                {img:require('../../img/建设.png'),msg:"建设内容",to:"/introduce"},
-                {img:require('../../img/组织.png'),msg:"组织架构",to:"/Equipment"},
-                {img:require('../../img/党.png'),msg:"党建引领",to:"/Exhibition"},
-                {img:require('../../img/设备.png'),msg:"主要设备信息",to:"/eqMsg"},
-                {img:require('../../img/团队建设.png'),msg:"主要人员信息",to:"/peopleMsg"}
+                {img:require('../assets/img/团队建设.png'),msg:"项目总体介绍",to:'/Construction'},
+                {img:require('../assets/img/建设.png'),msg:"建设内容",to:"/introduce"},
+                {img:require('../assets/img/组织.png'),msg:"组织架构",to:"/Equipment"},
+                {img:require('../assets/img/党.png'),msg:"党建引领",to:"/Exhibition"},
+                {img:require('../assets/img/设备.png'),msg:"主要设备信息",to:"/eqMsg"},
+                {img:require('../assets/img/团队建设.png'),msg:"主要人员信息",to:"/peopleMsg"}
             ],
             list:[]
     }
@@ -77,11 +77,10 @@ img{
 }
 .d1{
     position: fixed;
-    left: 50.2%;
+    left:calc(50% - 1px);
     width: 2px;
     height:100vh;
     background: #01589F;
-    margin: 0 auto;
 } 
 .elem{
     width: 90%;
@@ -105,6 +104,7 @@ img{
 
 }
 /* 滑块 */
+/* ===========左=========== */
 .img_left{
  /*    width: 4.8rem; */
     height: 1rem;
@@ -117,7 +117,7 @@ img{
         background: white;
         display: inline-block;
         margin-bottom: 0.3rem;
-        margin-left: 0.4rem;
+        margin-left: 0.35rem;
         border:2px solid #01589F;
     }
     .title{
@@ -150,7 +150,7 @@ img{
          height: 1rem;
     }
 }
-/* =============================================== */
+/* =======================右======================== */
 .img_right{
    /*  width:4.7rem; */
     height: 1rem;
@@ -170,7 +170,7 @@ img{
         background: white;
         display: inline-block;
         margin-bottom: 0.3rem;
-        margin-left: 0.2rem;
+        margin-left: 0.15rem;
         border:2px solid #01589F;
     }
     .title{
@@ -185,7 +185,7 @@ img{
         img{
             width: 0.6rem;
             height: 0.6rem;
-            margin-right: 0.3rem;
+            margin-right: 0.4rem;
         }
         span{
             width: 3rem;

@@ -1,12 +1,14 @@
 <template>
     <div class="Exhibition">
           <van-nav-bar title="" left-text="wad" fixed >
-    <van-icon name="cross" slot="left"  @click="location" />
-    </van-nav-bar>
-   <div v-if="list.new" class="item" v-html="list.new.info"></div>
-   <div v-for="(item,i) of list.url" :key="i">
-          <img :src="'http://js.vrccn.com/'+ item.url" @click="loadMore(item.id)">
-   </div>
+          <van-icon name="cross" slot="left"  @click="location" />
+          </van-nav-bar>
+    <div v-for="(item,i) of list.url" :key="i">
+           <img :src="'http://js.vrccn.com/'+ item.url" @click="loadMore(item.id)">
+    </div>
+    <div v-if="list.new" class="item">
+        <div v-html="list.new.info"></div>
+    </div>
         <fenxiang></fenxiang>
             <abc></abc> 
         </div>
@@ -42,7 +44,6 @@ export default {
             var data={token:this.id}
             this.axios.post(url,data).then(result=>{
                 this.list=result.data.data
-                console.log(result)
             })
         }
     },mounted(){
@@ -51,6 +52,9 @@ export default {
        fenxiang,
        abc 
     }
+    /* localStorage.setItem("lastname", "Smith");
+// 检索
+document.getElementById("result").innerHTML = localStorage.getItem("lastname"); */
 }
 </script>
 <style lang="scss" scoped>
@@ -68,8 +72,7 @@ export default {
             margin: 0 auto;
         }
         .item{
-                letter-spacing: 4px;
-            margin-top: 1.2rem;
+            letter-spacing: 4px;
             color: #333333;
             font-size:0.4rem;
         }

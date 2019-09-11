@@ -3,7 +3,7 @@
         <van-nav-bar title="首页" left-text="" fixed >
         </van-nav-bar>
         <div style="" class="index">
-        <img  src="../../img/矩形 10.png" alt="">
+        <img  src="../assets/img/矩形 10.png" alt="">
         </div>
         <div class="firstView">
             <div class="endView">
@@ -59,7 +59,6 @@ export default {
       }
     },
     mounted(){
-
 
   },
     components: {

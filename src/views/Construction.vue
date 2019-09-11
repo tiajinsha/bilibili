@@ -4,7 +4,7 @@
     <van-icon name="cross" slot="left"  @click="location" />
     </van-nav-bar>
         <div class="video">
-             <video  controls :src="'http://js.vrccn.com/' + list.url"></video>
+             <video preload=Metadata  controls :src="'http://js.vrccn.com/' + list.url"></video>
         </div>
         <div class="box">
             <div v-html="list.info"></div>
@@ -32,7 +32,6 @@ export default {
             var url="/getProject"
             this.axios.post(url).then(result=>{
                 this.list=result.data.data
-                console.log(result.data.data)
             })
         }
     },
@@ -57,8 +56,6 @@ export default {
             margin-top:0.4rem;
             div{
                margin-top: 0.4rem;
-                text-align: left;
-                text-indent:0.5rem;
                 letter-spacing: 4px;
                 font-size: 0.4rem;
                 margin-bottom:0.5rem;
