@@ -16,7 +16,7 @@
         <div class="mapDiv">
          <baidu-map  :center="center" :zoom="zoom" @ready="handler" class="map"></baidu-map>
         </div>
-        <scoll></scoll>
+     <scoll></scoll>
     </div>
 </template>
 <script>
@@ -74,7 +74,7 @@ export default {
     height: 12rem;
     position: fixed;
     opacity: 0.6;
-    top:5.78rem;
+    top:5.79rem;
           width: 100%;  
     .map{
         width: 100%;
@@ -83,6 +83,9 @@ export default {
       }
 }
 .index{
+    position: fixed;
+    top: 40px;
+    z-index: 99;
     img{
         width: 100%;
        }
@@ -93,18 +96,17 @@ export default {
     height: 1.5rem;
     background:rgba(1,88,159,1);
     border-radius:12px;
-    margin-top:-1rem;
-    position: absolute;
+    position:fixed;
     text-align: center;
-    left:0.5rem;
+    left:0.45rem;
     z-index: 100;
+    top:5rem;
     .endView{
        border:2px solid rgba(255,255,255,1);
        border-radius:8px;
         height: 1.2rem;
-        margin-top: 0.1rem;
         width: 95%;
-        margin-left: 0.13rem;
+        margin: 0.1rem auto;
         .lastView{
             p:nth-child(1){
                 font-weight: bold;
@@ -114,7 +116,7 @@ export default {
                 margin-top: 0.1rem;
             }
             p:nth-child(2){
-                font-size:5px;
+                font-size:10px;
                 font-family: PingFang-SC-Bold;
                 color:#FFFFFF;
             }

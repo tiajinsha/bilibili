@@ -25,7 +25,6 @@
             <router-link  v-for="(item,index) of list" :key="'travel'+index" :to="{name:'News',params:{id:item.id}}">
            <div v-if="index==0 || index%2==0" class="img_left">
                 <div class="title">
-
                           <img :src="'http://js.vrccn.com/'+ item.url" alt="">
                             <span>{{item.name}}</span>
                 </div>
@@ -89,6 +88,8 @@ img{
     margin:  0 auto;
     height:12rem;
     position: relative;
+    top:4.6rem;
+    overflow-y: hidden;
     //窗口高度
     .box{
         width: 100%;

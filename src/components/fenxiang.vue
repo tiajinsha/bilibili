@@ -6,13 +6,10 @@
         <van-popup v-model="show">
             <img style="width:50%;height:50%;" :src="img" alt="">
         </van-popup>
-        <div>{{message}}</div>
     </div>
 </template>
 <script>
 export default {
-    name:'fenxiang',
-    props:["message"],
     data(){
         return{
             show:false,
@@ -35,7 +32,6 @@ export default {
     },
     created(){
         this.list()
-        console.log(this.id)
     },watch:{
 
     }
@@ -52,8 +48,8 @@ export default {
 }
     .fenxiang{
             position: fixed;
-            top: 15rem;
-            left: 0.5rem;
+            bottom: 1.5rem;
+            left: 0.1rem;
             width: 1.3rem;
             height:1.3rem;
             box-shadow:#B2B2B2 0 0 5px 1px;

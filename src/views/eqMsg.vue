@@ -1,6 +1,6 @@
 <template>
     <div class="Exhibition">
-    <van-nav-bar title="组要设备" left-text="wad" fixed >
+    <van-nav-bar title="主要设备信息" left-text="wad" fixed >
     <van-icon name="cross" slot="left"  @click="location" />
     </van-nav-bar>
         <div class="item" v-html="list.info"></div>

@@ -14,4 +14,16 @@ a{
   }
   .van-icon{
       font-size: 0.4rem !important;
-  }
+}
+@font-face{
+    font-family:'myFont';
+    src:url('../font/PingFang\ SC\ Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+html,body{
+    font-family:myFont,sans-serif !important;
+}
+ img{
+    width: 100%;
+}

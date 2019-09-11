@@ -4,9 +4,12 @@
     <van-icon name="cross" slot="left"  @click="location" />
     </van-nav-bar>
    <div v-if="list.new" class="item" v-html="list.new.info"></div>
-    <fenxiang></fenxiang>
-        <abc></abc> 
-    </div>
+   <div v-for="(item,i) of list.url" :key="i">
+          <img :src="'http://js.vrccn.com/'+ item.url" @click="loadMore(item.id)">
+   </div>
+        <fenxiang></fenxiang>
+            <abc></abc> 
+        </div>
 </template>
 <script>
 import fenxiang from '../components/fenxiang'
@@ -24,10 +27,17 @@ export default {
         this.$store.commit("msg",this.id)
         this.msg()
     },methods:{
-         location(){
-               this.$router.push("/")
+        loadMore(id){
+            var url="/getNews"
+            var data={token:id}
+            this.axios.post(url,data).then(result=>{
+                this.list=result.data.data
+            })
         },
-        msg(){
+         location(){
+             this.$router.push("/")
+        },
+        msg(id){
             var url="/getNews"
             var data={token:this.id}
             this.axios.post(url,data).then(result=>{
@@ -48,12 +58,20 @@ export default {
         width:90%;
         height:500px;
         margin: 0 auto;
+        img{
+            width: 100%;
+            display: inline-block;
+            box-shadow: 0 0 6px #999;
+            margin-top: 10px;
+        }
+        div{
+            margin: 0 auto;
+        }
         .item{
+                letter-spacing: 4px;
             margin-top: 1.2rem;
             color: #333333;
             font-size:0.4rem;
-            text-indent:0.5rem;
-            letter-spacing: 4px;
         }
     }
 </style>

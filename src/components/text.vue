@@ -1,8 +1,9 @@
 <template>
 <div class="box_hidden">
-    <div class="text">
-       <transition>
-        <ul v-show="!show">
+    <div   class="text">
+        <ul >
+            <transition>
+            <ul v-show="!show">
             <router-link to="/Construction">
             <li>
                 <div>
@@ -43,19 +44,17 @@
                 <div><img src="../../img/团队建设.png" alt=""></div>
             </li>
             </router-link>
-        </ul>
-      </transition>
-    </div>
-        <div class="d1" @click="show = !show">
-            <transition>
-            <div v-show="!show">
-            <router-link to="/">
-                <p>首页</p>
-            </router-link>
-                </div>
+            </ul>
             </transition>
-            <div><img src="../../img/主页绿.png" alt=""></div>
-        </div>
+            <li style="margin-top:3px;">
+                <div class="yinchang"><p>首页</p></div>
+                <div @click="show = !show"><img src="../../img/主页绿.png" alt=""></div>
+            </li>
+        </ul>
+    </div>
+       <!--  <div class="d1">
+            <div @click="show = !show"><img src="../../img/主页绿.png" alt=""></div>
+        </div>  -->
 </div>
 </template>
 <script>
@@ -66,6 +65,7 @@ export default {
         }
     },
     methods:{
+        
     },
     mounted(){
         this.show=true 
@@ -73,36 +73,40 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.v-enter{
+     opacity: 0;
+     transform: translateX(100%);
+   }
+      .v-leave-to{
+     opacity: 0;
+     transform: translateX(100%);
+   }
+   .v-enter-active, 
+   .v-leave-active{
+     transition: all 0.5s ease;
+   }
 .box_hidden{
-        overflow: hidden;
-        top: 3.4rem;
         position: fixed;
-        left: 4.5rem;
-        width: 5.2rem;
+        left: 4.9rem;
+        width: 5rem;
         z-index: 1000;
+        bottom: 1rem;
     .text{
-        width:5.4rem;;
+        width:5rem;;
         overflow-y: scroll;
-        height: 11.5rem;
-        .v-enter-active{
-         /*   transition: opacity .5s; */
-         transition: all .3s ease;
-        }
-        .v-leave-active {
-         transition: all .3s ease;
-           /* transition: opacity .5s; */
-        }
-        .v-enter, .v-leave-to{
-         transform: translateY(300px);
-          opacity: 0;
-        }
         ul{
              white-space: nowrap;
             list-style: none;
+            :first-child li{
+                margin-top: 5px;
+            }
             li{
             height: 1.9rem;
             display: flex;
             justify-content: space-between;
+            .yinchang{
+               opacity: 0 !important;
+            }
             div{
                 width: 3rem;
                 text-align: center;
@@ -124,7 +128,7 @@ export default {
                 width: 1.3rem;
                 box-shadow:#B2B2B2 0 0 5px 1px;
                 border-radius: 50%;
-                margin-right:0.55rem;
+                margin-right:0.1rem;
             img{
                 width: 1.3rem;
             }
@@ -133,41 +137,20 @@ export default {
         }
     }
     .d1{
-        margin-bottom: 0.1rem;
-        width:100%;
-        height: 1.3rem;
-        display: flex;
-        /* justify-content: space-between; */
-        position: fixed;
-        top: 15rem;
-        div{
-            width: 45%;
+         position: fixed;
+            bottom: 1rem;
+            right: 0.2rem;
+            width: 1.3rem;
             height:1.3rem;
-        }
-        div:nth-child(1){
-                margin-left:0.1rem;
-                border-radius: 5px;
-                background: #FFFFFF;
-                box-shadow:#B2B2B2 0 0 5px 1px;
-                text-align: center;
-                width: 3rem;
-                p{
-                    line-height: -15px;
-                    margin-top:0.3rem;
-                    font-size: 0.4rem;
-                    font-weight: bold;
-                }
-        }
-        div:nth-child(2){
-                width: 1.3rem;
-                box-shadow:#B2B2B2 0 0 5px 1px;
-                border-radius: 50%;
-                position: fixed;
-                right: 0.75rem;
+            box-shadow:#B2B2B2 0 0 5px 1px;
+            border-radius: 50%;
             img{
                 width: 1.3rem;
+                display: inline-block;
+                justify-content: center;
+                align-items: center
+
             }
-        }
     }
 }
 </style>
