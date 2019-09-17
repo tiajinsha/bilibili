@@ -67,7 +67,7 @@
 export default {
     data(){
         return{
-            show:true
+            show:true,
         }
     },
     methods:{
@@ -79,6 +79,8 @@ export default {
         this.show=true
         window.addEventListener('scroll', this.getScroll);
 
+    },created(){
+        
     }
 }
 </script>

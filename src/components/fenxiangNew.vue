@@ -22,14 +22,12 @@ export default {
         alert()
     },methods:{
         href(){
-           console.log(this.$router) 
         },
         location(id){
             var url="/getNews"
             var data={token:id}
             this.axios.post(url,data).then(result=>{
             this.list=result.data.data
-            console.log(result)
             })
         },
         msg(){
@@ -38,7 +36,6 @@ export default {
             var url="/getNews"
             var data={token:id}
             this.axios.post(url,data).then(result=>{
-            console.log(result)
             this.list=result.data.data
             })
         }

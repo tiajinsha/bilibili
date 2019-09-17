@@ -1,5 +1,5 @@
 <template>
-    <div style="z-index:1000;">
+    <div  style="z-index:1000;">
           <div style="z-index:1000;" class="fenxiang" @click="showPopup()">
             <img src="../assets/img/分享 拷贝.png" alt="">
           </div>
@@ -16,7 +16,7 @@ export default {
         return{
             show:false,
             img:"",
-            id:""
+            id:"",
         }
       },methods:{
            showPopup() {
@@ -32,8 +32,6 @@ export default {
     },
     created(){
         this.list()
-        console.log(this.title)
-        console.log(this.id)
     },watch:{
 
     }

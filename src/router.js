@@ -13,6 +13,7 @@ import eqMsg from './views/eqMsg'
 import News from './views/News'
 import fenxiangNew from './components/fenxiangNew'
 import msgTitle from './views/msgTitle'
+import indexFenxiang from './components/indexFenxiang'
 
 
 Vue.use(Router)
@@ -89,6 +90,11 @@ export default new Router({
       path: '/msgTitle',
       name: 'msgTitle',
       component:  msgTitle,
+      props:true
+    }, {
+      path: '/indexFenxiang',
+      name: 'indexFenxiang',
+      component:  indexFenxiang,
       props:true
     }
    

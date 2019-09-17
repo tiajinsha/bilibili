@@ -3,7 +3,7 @@
           <van-nav-bar title="" left-text="wad" fixed >
           <van-icon name="arrow-left" slot="left"  @click="location" />
           </van-nav-bar>
-    <div class="titleParsent" v-for="(item,i) of list.url" :key="i">
+    <div class="titleParsent"  v-for="(item,i) of list.url" :key="i">
            <img :src="'http://js.vrccn.com/'+ item.url" @click="loadMore(item.id)">
            <div  class="titleSon"></div>
             <p class="titleName">{{item.name}}</p>
@@ -28,32 +28,23 @@ export default {
     },
     created(){
         if(this.$route.params.id==undefined || this.$route.params.id.length==0){
-<<<<<<< HEAD
           /*   this.id=sessionStorage.getItem("id") */
             this.id=this.$route.query.id
+            sessionStorage.setItem("id",this.id)
             this.msg()
         }else{
             this.id=this.$route.query.id
-=======
-            this.id=sessionStorage.getItem("id")
-            this.msg()
-        }else{
-            this.id=this.$route.params.id
->>>>>>> 497ea438818b26facacb81729f134e177d9c29f7
             this.$store.commit("msg",this.id)
             sessionStorage.setItem("id",this.id)
             this.msg()
         }
-<<<<<<< HEAD
-=======
             
->>>>>>> 497ea438818b26facacb81729f134e177d9c29f7
     },methods:{
         loadMore(sum){
             this.$router.push({
                 path:"msgTitle?id=" + sum
             })
-            sessionStorage.removeItem("id");
+            this.$router.go(0)
         },
          location(){
             this.$router.back() 
@@ -67,20 +58,11 @@ export default {
             })
         }
     },mounted(){
-<<<<<<< HEAD
        
     },
-    destroyed: function () {
+   /*  destroyed: function () {
         sessionStorage.removeItem("id");
-    },computed:{
-
-=======
-
-    },
-    destroyed: function () {
-        sessionStorage.removeItem("id");
->>>>>>> 497ea438818b26facacb81729f134e177d9c29f7
-    },
+    }, */
     components:{
        fenxiang,
        abc 

@@ -7,7 +7,7 @@
              <video preload=Metadata  controls :src="'http://js.vrccn.com/' + list.url"></video>
         </div>
         <div class="box">
-            <div v-html="list.info"></div>
+            <div style="margin-left:0.2rem;" v-html="list.info"></div>
         </div>
          <fenxiang title="#/Construction"></fenxiang>
         <abc></abc>
@@ -24,6 +24,7 @@ export default {
     },
     created(){
         this.msg()
+        console.log(window.history)
     },
     methods:{
          location(){
@@ -47,12 +48,12 @@ export default {
         .video{
             video{
                 position: relative;
-                width: 100%;
+                width:10rem;
             }
         }
         .box{
-            width: 90%;
-            margin: 0 auto;
+            width:10rem;
+          /*    margin: 0 auto; */
             margin-top:0.4rem;
             div{
                margin-top: 0.4rem;

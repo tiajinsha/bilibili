@@ -3,11 +3,16 @@
           <van-nav-bar title="" left-text="wad" fixed >
           <van-icon name="arrow-left" slot="left"  @click="location"/>
           </van-nav-bar>
+    <div class="titleParsent"  v-for="(item,i) of list.url" :key="i">
+           <img :src="'http://js.vrccn.com/'+ item.url" @click="loadMore(item.id)">
+           <div  class="titleSon"></div>
+            <p class="titleName">{{item.name}}</p>
+    </div>
     <div v-if="list.new" class="item">
         <div v-html="list.new.info"></div>
     </div>
-        <fenxiang title="#/msgTitle" :id="this.id" ></fenxiang>
-            <abc></abc>  
+        <fenxiang v-show="" title="#/msgTitle" :id="this.id" ></fenxiang>
+            <abc v-show=""></abc>  
         </div>
 </template>
 <script>
@@ -21,12 +26,24 @@ export default {
         }
     },
     created(){
-      console.log(this.$route.query.id)
+          console.log(window.history)
       this.id=this.$route.query.id
       this.msg()
     },methods:{
+        loadMore(id){
+            var url="/getNews"
+            var data={token:id}
+            this.axios.post(url,data).then(result=>{
+                this.list=result.data.data
+                console.log(result.data.data)
+            })
+        },
           location(){
-            this.$router.back() 
+            var a=sessionStorage.getItem("id")
+            this.$router.go(-1)
+           /*  setInterval(() => {
+                location.reload();
+            },500); */
         },
          msg(){
             var url="/getNews"

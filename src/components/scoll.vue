@@ -1,5 +1,5 @@
 <template>
-    <div class="elem">
+    <div  class="elem">
         <div class="d1"></div>
         <div class="box">
            <!--  // -->
@@ -48,6 +48,7 @@
 export default {
     data(){
         return {
+               yinchang:true,
             data:[
                 {img:require('../assets/img/团队建设.png'),msg:"项目总体介绍",to:'/Construction'},
                 {img:require('../assets/img/建设.png'),msg:"建设内容",to:"/introduce"},
@@ -78,7 +79,8 @@ img{
 }
 .d1{
     position: fixed;
-    left:calc(50% - 1px);
+    left:5rem;
+  /*   left:calc(50% - 1px); */
     width: 2px;
     height:100vh;
     background: #01589F;
@@ -86,14 +88,14 @@ img{
 .elem{
     width: 90%;
     margin:  0 auto;
-    height:12rem;
+    height:13rem;
     position: relative;
-    top:4.6rem;
+    top:3.6rem;
     overflow-y: hidden;
     //窗口高度
     .box{
         width: 100%;
-        height: 12rem;
+        height: 13rem;
         position: absolute;
         top: 0px;
         overflow-y: auto;

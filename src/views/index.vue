@@ -1,8 +1,6 @@
 <template>
-    <div>
-        <van-nav-bar title="首页" left-text="" fixed >
-        </van-nav-bar>
-        <div style="" class="index">
+    <div style="width:10rem;">
+        <div style="margin-top:-40px;" class="index">
         <img  src="../assets/img/矩形 10.png" alt="">
         </div>
         <div class="firstView">
@@ -17,11 +15,12 @@
          <baidu-map  :center="center" :zoom="zoom" @ready="handler" class="map"></baidu-map>
         </div>
      <scoll></scoll>
+     <fenxiang></fenxiang>
     </div>
 </template>
 <script>
 import BaiduMap from 'vue-baidu-map/components/map/Map.vue'
-import fenxiang from '../components/fenxiang'
+import fenxiang from '../components/indexFenxiang'
 import scoll from '../components/scoll'
 export default {
     data(){
@@ -70,8 +69,8 @@ export default {
     height: 12rem;
     position: fixed;
     opacity: 0.6;
-    top:5.79rem;
-          width: 100%;  
+    top:4.79rem;
+    width: 10rem;  
     .map{
         width: 100%;
   height:17rem;
@@ -88,7 +87,7 @@ export default {
     }
 
 .firstView{
-    width: 90%;
+    width: 9rem;
     height: 1.5rem;
     background:rgba(1,88,159,1);
     border-radius:12px;
@@ -96,7 +95,7 @@ export default {
     text-align: center;
     left:0.45rem;
     z-index: 100;
-    top:5rem;
+    top:4rem;
     .endView{
        border:2px solid rgba(255,255,255,1);
        border-radius:8px;
