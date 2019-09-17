@@ -28,15 +28,26 @@ export default {
     },
     created(){
         if(this.$route.params.id==undefined || this.$route.params.id.length==0){
+<<<<<<< HEAD
           /*   this.id=sessionStorage.getItem("id") */
             this.id=this.$route.query.id
             this.msg()
         }else{
             this.id=this.$route.query.id
+=======
+            this.id=sessionStorage.getItem("id")
+            this.msg()
+        }else{
+            this.id=this.$route.params.id
+>>>>>>> 497ea438818b26facacb81729f134e177d9c29f7
             this.$store.commit("msg",this.id)
             sessionStorage.setItem("id",this.id)
             this.msg()
         }
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 497ea438818b26facacb81729f134e177d9c29f7
     },methods:{
         loadMore(sum){
             this.$router.push({
@@ -56,12 +67,19 @@ export default {
             })
         }
     },mounted(){
+<<<<<<< HEAD
        
     },
     destroyed: function () {
         sessionStorage.removeItem("id");
     },computed:{
 
+=======
+
+    },
+    destroyed: function () {
+        sessionStorage.removeItem("id");
+>>>>>>> 497ea438818b26facacb81729f134e177d9c29f7
     },
     components:{
        fenxiang,
