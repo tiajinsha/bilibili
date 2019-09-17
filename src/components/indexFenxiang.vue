@@ -1,5 +1,5 @@
 <template>
-    <div style="z-index:1000;">
+    <div v-show="showBar" style="z-index:1000;">
           <div style="z-index:1000;" class="fenxiang" @click="showPopup()">
             <img src="../assets/img/分享 拷贝.png" alt="">
           </div>
@@ -15,6 +15,7 @@ export default {
         return{
             show:false,
             img:"",
+             showBar:true
         }
       },methods:{
            showPopup() {
@@ -55,7 +56,6 @@ export default {
                 display: inline-block;
                 justify-content: center;
                 align-items: center
-
             }
           }
     .blod{

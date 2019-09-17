@@ -7,14 +7,23 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     msg:"",
-    new:[]
+    new:[],
+    show:false
   },
   mutations: {
   msg(state,data){
     state.msg=data
+    },
+  showBar(state){
+      state.show=true
     }
   },
   actions: {
 
-  }
+  },
+/*   getters:{
+    show:state =>{
+      return state.show
+    }
+  }, */
 })

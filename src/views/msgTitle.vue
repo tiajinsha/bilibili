@@ -11,8 +11,8 @@
     <div v-if="list.new" class="item">
         <div v-html="list.new.info"></div>
     </div>
-        <fenxiang v-show="" title="#/msgTitle" :id="this.id" ></fenxiang>
-            <abc v-show=""></abc>  
+        <fenxiang  title="#/msgTitle" :id="this.id" ></fenxiang>
+            <abc></abc>  
         </div>
 </template>
 <script>
@@ -26,7 +26,6 @@ export default {
         }
     },
     created(){
-          console.log(window.history)
       this.id=this.$route.query.id
       this.msg()
     },methods:{
@@ -35,15 +34,10 @@ export default {
             var data={token:id}
             this.axios.post(url,data).then(result=>{
                 this.list=result.data.data
-                console.log(result.data.data)
             })
         },
           location(){
-            var a=sessionStorage.getItem("id")
             this.$router.go(-1)
-           /*  setInterval(() => {
-                location.reload();
-            },500); */
         },
          msg(){
             var url="/getNews"

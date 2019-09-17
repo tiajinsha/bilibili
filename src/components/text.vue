@@ -1,5 +1,5 @@
 <template>
-<div class="box_hidden">
+<div v-show="showBar" class="box_hidden">
     <div   class="text">
         <ul >
             <transition>
@@ -68,6 +68,7 @@ export default {
     data(){
         return{
             show:true,
+            showBar:true
         }
     },
     methods:{
@@ -80,7 +81,7 @@ export default {
         window.addEventListener('scroll', this.getScroll);
 
     },created(){
-        
+         this.showBar=this.$store.state.show
     }
 }
 </script>
@@ -99,13 +100,13 @@ export default {
    }
 .box_hidden{
         position: fixed;
-        left: 4.9rem;
+       /*  left: 4.9rem; */
+       right: 0.5rem;
         width: 5rem;
         z-index:500;
         bottom: 1rem;
     .text{
         width:5rem;;
-        overflow-y: scroll;
         ul{
              white-space: nowrap;
             list-style: none;

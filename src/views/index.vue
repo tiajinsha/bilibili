@@ -30,6 +30,7 @@ export default {
         }
     },
     created(){
+         this.$store.commit("showBar")
 /*         alert(window.screen.width)
         alert(window.screen.height)  */
         //创建地图实例
@@ -88,7 +89,7 @@ export default {
 
 .firstView{
     width: 9rem;
-    height: 1.5rem;
+    max-height:75px;
     background:rgba(1,88,159,1);
     border-radius:12px;
     position:fixed;
@@ -99,7 +100,7 @@ export default {
     .endView{
        border:2px solid rgba(255,255,255,1);
        border-radius:8px;
-        height: 1.2rem;
+        max-height:57;
         width: 95%;
         margin: 0.1rem auto;
         .lastView{
@@ -108,12 +109,13 @@ export default {
                 font-size:15px;
                 color:#FFFFFF;
                 font-family: PingFang-SC-Bold;
-                margin-top: 0.1rem;
+                margin-top: 0.05rem;
             }
             p:nth-child(2){
                 font-size:10px;
                 font-family: PingFang-SC-Bold;
                 color:#FFFFFF;
+                 margin-bottom: 0.1rem;
             }
         }
     }

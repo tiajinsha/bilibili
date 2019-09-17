@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-show="showBar">
           <div class="fenxiang" @click="showPopup()">
             <img src="../assets/img/分享 拷贝.png" alt="">
           </div>
@@ -15,9 +15,9 @@ export default {
     data(){
         return{
             show:false,
-            yinchang:true,
             img:"",
-            msg:""
+            msg:"",
+            showBar:true
         }
       },methods:{
            showPopup() {
@@ -32,6 +32,7 @@ export default {
        }
     },
     created(){
+        this.showBar=this.$store.state.show
         this.list()
     },watch:{
         id:{

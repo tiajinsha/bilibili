@@ -46,14 +46,15 @@ export default {
 <style lang="scss" scoped>
     .Construction{
         .video{
+            text-align: center;
             video{
                 position: relative;
-                width:10rem;
+                 max-width:10rem;
             }
         }
         .box{
-            width:10rem;
-          /*    margin: 0 auto; */
+             width:90%;
+              margin: 0 auto;
             margin-top:0.4rem;
             div{
                margin-top: 0.4rem;

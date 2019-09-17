@@ -27,6 +27,7 @@ export default {
         }
     },
     created(){
+        console.log(window.history)
         if(this.$route.params.id==undefined || this.$route.params.id.length==0){
           /*   this.id=sessionStorage.getItem("id") */
             this.id=this.$route.query.id
@@ -44,7 +45,6 @@ export default {
             this.$router.push({
                 path:"msgTitle?id=" + sum
             })
-            this.$router.go(0)
         },
          location(){
             this.$router.back() 

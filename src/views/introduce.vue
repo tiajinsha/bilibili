@@ -139,8 +139,7 @@ export default {
                 margin-top: 0.4rem;
                 text-align: left;
                 text-indent:0.5rem;
-                letter-spacing: 4px;
-                line-height: 19px;
+                line-height: 0.7rem;
                 font-size: 0.4rem;
                 margin-bottom:0.5rem;
             }
