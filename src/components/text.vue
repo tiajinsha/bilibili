@@ -44,6 +44,12 @@
                 <div><img src="../assets/img/团队建设.png" alt=""></div>
             </li>
             </router-link>
+            <router-link to="/">
+            <li>
+                 <div><p>首页</p></div>
+                <div style="background:white"><img style="width:0.8rem;margin-top:7px;" src="../assets/img/首页.png" alt=""></div>
+            </li>
+            </router-link>
             </ul>
             </transition>
             <li style="margin-top:3px;">
@@ -105,7 +111,7 @@ export default {
                 margin-top: 5px;
             }
             li{
-            height: 1.9rem;
+            height: 1.5rem;
             display: flex;
             justify-content: space-between;
             .yinchang{
@@ -126,6 +132,7 @@ export default {
                     margin-top:0.3rem;
                     font-size: 0.4rem;
                     font-weight: bold;
+                    text-align: center;
                 }
             }
             div:nth-child(2){

@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <transition mode="out-in">
-    <router-view></router-view>
-    </transition>
+      <router-view ></router-view>
   </div>
 </template>
 <script>
@@ -16,9 +14,15 @@ setHtmlFontSize(); */
 export default {
   data(){
       return{
-        title:""
+        title:"",
       }
-  },watch:{
+  },created(){
+       
+  },
+  methods:{
+  },
+  watch:{
+
     }
 }
   

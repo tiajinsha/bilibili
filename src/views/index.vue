@@ -38,9 +38,6 @@ export default {
         this.postGet()
     },
     methods:{
-         location(){
-               this.$router.push("/")
-        },
         postGet(){
             var url="/getNews"
             var obj={token:1}

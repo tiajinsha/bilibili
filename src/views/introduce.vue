@@ -1,7 +1,8 @@
 <template>
     <div class="introduce">
           <van-nav-bar title="建设内容" left-text="wad" fixed >
-    <van-icon name="cross" slot="left"  @click="location" />
+    <van-icon name="arrow-left
+" slot="left"  @click="location" />
     </van-nav-bar>
         <div class="box1">
             <img :src="'http://js.vrccn.com/' + list.url" alt="">
@@ -27,6 +28,7 @@
             <div v-html="list.info"></div>
             <img src="../assets/img/03258picfm4pv1nbpja23_pic2018-2.png" alt="">
         </div>
+         <fenxiang title="#/introduce"></fenxiang>
              <abc></abc>
     </div>
 </template>
@@ -46,7 +48,7 @@ export default {
     },
     methods:{
          location(){
-               this.$router.push("/")
+               this.$router.go(-1)
         },
         msg(){
             var url="/getContent"

@@ -22,7 +22,8 @@
             </div> 
            </router-link>
            <!-- ======================================================== -->
-            <router-link  v-for="(item,index) of list" :key="'travel'+index" :to="{name:'News',params:{id:item.id}}">
+           <!-- :to="{name:'News',params:{id:item.id}}" -->
+            <router-link  v-for="(item,index) of list" :key="'travel'+index"  :to="`/News?id=${item.id}`">
            <div v-if="index==0 || index%2==0" class="img_left">
                 <div class="title">
                           <img :src="'http://js.vrccn.com/'+ item.url" alt="">

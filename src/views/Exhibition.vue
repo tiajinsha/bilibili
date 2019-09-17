@@ -1,9 +1,11 @@
 <template>
     <div class="Exhibition">
           <van-nav-bar title="党建引领" left-text="wad" fixed >
-          <van-icon name="cross" slot="left"   @click="location" />
+          <van-icon name="arrow-left
+" slot="left"   @click="location" />
           </van-nav-bar>
      <div v-html="list.info"></div>
+      <fenxiang title="#/Exhibition"></fenxiang>
         <abc></abc>
     </div>
 </template>
@@ -20,7 +22,7 @@ export default {
         this.msg()
     },methods:{
          location(){
-               this.$router.push("/")
+               this.$router.go(-1)
         },
         msg(){
             var url="/getParty"

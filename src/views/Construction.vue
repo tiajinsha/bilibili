@@ -1,7 +1,7 @@
 <template>
     <div class="Construction">
           <van-nav-bar title="项目总体介绍" left-text="wad" fixed >
-    <van-icon name="cross" slot="left"  @click="location" />
+    <van-icon name="arrow-left" slot="left"  @click="location" />
     </van-nav-bar>
         <div class="video">
              <video preload=Metadata  controls :src="'http://js.vrccn.com/' + list.url"></video>
@@ -9,6 +9,7 @@
         <div class="box">
             <div v-html="list.info"></div>
         </div>
+         <fenxiang title="#/Construction"></fenxiang>
         <abc></abc>
     </div>
 </template>
@@ -26,7 +27,7 @@ export default {
     },
     methods:{
          location(){
-               this.$router.push("/")
+               this.$router.go(-1)
         },
         msg(){
             var url="/getProject"
@@ -36,7 +37,6 @@ export default {
         }
     },
     components:{
-     /*   touchBar, */
        fenxiang,
        abc 
     }

@@ -1,53 +1,34 @@
 <template>
     <div class="Exhibition">
           <van-nav-bar title="" left-text="wad" fixed >
-          <van-icon name="arrow-left" slot="left"  @click="location" />
+          <van-icon name="arrow-left" slot="left"  @click="location"/>
           </van-nav-bar>
-    <div class="titleParsent" v-for="(item,i) of list.url" :key="i">
-           <img :src="'http://js.vrccn.com/'+ item.url" @click="loadMore(item.id)">
-           <div  class="titleSon"></div>
-            <p class="titleName">{{item.name}}</p>
-    </div>
     <div v-if="list.new" class="item">
         <div v-html="list.new.info"></div>
     </div>
-        <fenxiang title="#/News" :id="this.id" ></fenxiang>
-            <abc></abc> 
+        <fenxiang title="#/msgTitle" :id="this.id" ></fenxiang>
+            <abc></abc>  
         </div>
 </template>
 <script>
 import fenxiang from '../components/newsFenxiang'
 import abc from '../components/text'
 export default {
-    name:'News',
     data(){
         return{
-            list:[],
-            id:"",
+             list:[],
+             id:""
         }
     },
     created(){
-        if(this.$route.params.id==undefined || this.$route.params.id.length==0){
-          /*   this.id=sessionStorage.getItem("id") */
-            this.id=this.$route.query.id
-            this.msg()
-        }else{
-            this.id=this.$route.query.id
-            this.$store.commit("msg",this.id)
-            sessionStorage.setItem("id",this.id)
-            this.msg()
-        }
+      console.log(this.$route.query.id)
+      this.id=this.$route.query.id
+      this.msg()
     },methods:{
-        loadMore(sum){
-            this.$router.push({
-                path:"msgTitle?id=" + sum
-            })
-            sessionStorage.removeItem("id");
-        },
-         location(){
+          location(){
             this.$router.back() 
         },
-        msg(id){
+         msg(){
             var url="/getNews"
             var data={token:this.id}
             this.axios.post(url,data).then(result=>{
@@ -55,15 +36,8 @@ export default {
                 console.log(result.data.data)
             })
         }
-    },mounted(){
-       
     },
-    destroyed: function () {
-        sessionStorage.removeItem("id");
-    },computed:{
-
-    },
-    components:{
+       components:{
        fenxiang,
        abc 
     }
@@ -90,7 +64,7 @@ export default {
             bottom:0.35rem;
             color: white;
             font-size:0.4rem;
-            z-index: 501;
+            z-index: 2000;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;

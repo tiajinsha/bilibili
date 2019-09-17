@@ -1,5 +1,11 @@
 <template>
 <div class="Exhibition">
+    <van-nav-bar title="" left-text="wad" fixed >
+    <van-icon name="arrow-left" slot="left" @click="href" />
+    </van-nav-bar>
+    <div v-for="(item,i) of list.url" :key="i" @click="location(item.id)">
+        <img :src="'http://js.vrccn.com/' + item.url" alt="">
+    </div>
    <div v-if="list.new" class="item" v-html="list.new.info"></div>
 </div>
 </template>
@@ -13,16 +19,31 @@ export default {
     },
     created(){
         this.msg()
+        alert()
     },methods:{
-        msg(){
-            var id=this.$route.query.id
+        href(){
+           console.log(this.$router) 
+        },
+        location(id){
             var url="/getNews"
             var data={token:id}
             this.axios.post(url,data).then(result=>{
-                this.list=result.data.data
+            this.list=result.data.data
+            console.log(result)
+            })
+        },
+        msg(){
+            var id=this.$route.query.id
+            alert(id)
+            var url="/getNews"
+            var data={token:id}
+            this.axios.post(url,data).then(result=>{
+            console.log(result)
+            this.list=result.data.data
             })
         }
     },mounted(){
+
     }
 }
 </script>
@@ -32,10 +53,8 @@ export default {
         height:500px;
         margin: 0 auto;
         .item{
-            margin-top: 1.2rem;
             color: #333333;
             font-size:0.4rem;
-            text-indent:0.5rem;
             letter-spacing: 4px;
         }
     }

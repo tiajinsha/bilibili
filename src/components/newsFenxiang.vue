@@ -1,6 +1,6 @@
 <template>
-    <div style="z-index:1000;">
-          <div style="z-index:1000;" class="fenxiang" @click="showPopup()">
+    <div>
+          <div class="fenxiang" @click="showPopup()">
             <img src="../assets/img/分享 拷贝.png" alt="">
           </div>
         <van-popup v-model="show">
@@ -11,12 +11,12 @@
 </template>
 <script>
 export default {
-    props:["title"],
+    props:["title","id"],
     data(){
         return{
             show:false,
             img:"",
-            id:""
+            msg:""
         }
       },methods:{
            showPopup() {
@@ -32,10 +32,13 @@ export default {
     },
     created(){
         this.list()
-        console.log(this.title)
-        console.log(this.id)
     },watch:{
-
+        id:{
+            handler(newValue,oldValue){
+            this.id = newValue
+            this.list()
+            }
+         }
     }
 }
 </script>

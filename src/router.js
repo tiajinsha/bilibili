@@ -12,6 +12,7 @@ import Equipment from './views/Equipment'
 import eqMsg from './views/eqMsg'
 import News from './views/News'
 import fenxiangNew from './components/fenxiangNew'
+import msgTitle from './views/msgTitle'
 
 
 Vue.use(Router)
@@ -83,7 +84,14 @@ export default new Router({
       name: 'fenxiangNew',
       component: fenxiangNew,
       props:true
+    },
+    {
+      path: '/msgTitle',
+      name: 'msgTitle',
+      component:  msgTitle,
+      props:true
     }
+   
   ],
   linkActiveClass: 'active',
 })

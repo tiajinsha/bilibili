@@ -1,7 +1,8 @@
 <template>
     <div class="peopleTitle">
     <van-nav-bar title="主要人员信息" left-text="wad" fixed >
-    <van-icon name="cross" slot="left"  @click="location" />
+    <van-icon name="arrow-left
+" slot="left"  @click="location" />
     </van-nav-bar>
         <div v-for="(elem,i) of list" :key="i" class="item">
             <div  class="item1">
@@ -30,6 +31,7 @@
             </div>
         </div>
         <!-- 引入子组件 -->
+         <fenxiang title="#/peopleMsg"></fenxiang>
         <abc></abc>
     </div>
 </template>
@@ -49,7 +51,7 @@ export default {
     },
     methods:{
          location(){
-               this.$router.push("/")
+               this.$router.go(-1)
         },
         msg(){
            var url="/getStaff"

@@ -6,6 +6,7 @@ a{
     color: #333333;
 } 
 .van-nav-bar{
+    z-index: 1000 !important;
     height: 40px !important;line-height: 40px !important;
 }
 .van-nav-bar .van-icon{
@@ -29,4 +30,12 @@ html,body{
 }
 p{
     text-indent: 10px;
+}
+.van-popup{
+    width: 90% !important;
+    height:8rem !important;
+    border-radius: 12px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
