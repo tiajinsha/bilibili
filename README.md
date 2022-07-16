@@ -1,38 +1,68 @@
-# Electron-React-template
+<br />
+<p align="center">
+  <a href="https://github.com/tiajinsha/bilibili-app" target="blank">
+    <img src="images/logo.png" alt="Logo" width="250" height="156">
+  </a>
+  <h2 align="center" style="font-weight: 600">BiliBili</h2>
 
+  <p align="center">
+    高仿Bilibili电脑客户端，支持windows，macOS。
+    <br />
+    <a href="#%EF%B8%8F-安装" target="blank"><strong>📦️ 下载安装包</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <br />
+    <br />
+  </p>
+</p>
 
-#### How to use
+[![album][album-screenshot](https://github.com/tiajinsha/bilibili-app)
 
-``` bash
-npm install or yarn install
+## ✨ 特性
 
-npm run dev or yarn dev
+- ✅ 使用 react 全家桶开发
+- 📺 支持视频播放
+- 📃 支持鼠标悬停预览视频效果
+- 📃 支持弹幕
+- 🛠 electron 后台线程集成 bilibili-api。
+- 🖥️ 方便二次开发，其他功能开发中
 
+# 安装依赖
 
+yarn install
 
-# Live in China
-# 首先全局安装nrm
-npm i -g nrm
-# 然后使用nrm切换为淘宝源，或者你已经切换了npm的源也是可以的，强烈不建议使用cnpm如果你不想看到什么奇奇怪怪的爆红问题
-nrm ls
-nrm use taobao
-# 或者可以使用更加优秀的yarn。
-# 当然，yarn也需要配置淘宝镜像，需要将配置到系统的环境变量里
-npm install or yarn install
+# 运行
 
-# 启动之后，会在9080端口监听
-# 需要重新运行一次此命令
-npm run dev
+yarn dev
 
-# build命令在不同系统环境中，需要的的不一样，需要自己根据自身环境进行配置
-npm run build
+# 打包
 
-# 如若实在不行无法安装electron依赖，请使用
-npm config edit
-# 该命令会打开npm的配置文件，请在registry=https://registry.npm.taobao.org/这行代码后的下一行添加
-# electron_mirror=https://cdn.npm.taobao.org/dist/electron/  和  ELECTRON_BUILDER_BINARIES_MIRROR=http://npm.taobao.org/mirrors/electron-builder-binaries/
-# 然后关闭该窗口，重启命令行，删除node_modules文件夹，并重新安装依赖即可
+yarn build
 
-```
+## ☑️ Todo
 
----
+查看 Todo 请访问本项目的 [Projects](https://github.com/tiajinsha/bilibili-app/tree/master/.github/workflows)
+
+欢迎提 Issue 和 Pull request。
+
+## 📜 开源许可
+
+本项目仅供个人学习研究使用，禁止用于商业及非法用途,如要进行商业用途请联系作者。
+
+基于 [MIT license](https://opensource.org/licenses/MIT) 许可进行开源。
+
+## 灵感来源
+
+API 源代码来自 [fython/BilibiliAPIDocs](https://github.com/fython/BilibiliAPIDocs)
+
+## 🖼️ 截图
+
+![artist][artist-screenshot]
+![explore][explore-screenshot]
+<img src="images/IMG_37152.JPG" style="width:100%;height:100%" alt="Logo" width="250" height="156">
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[album-screenshot]: images/home.png
+[artist-screenshot]: images/hover.png
+[explore-screenshot]: images/video.png
+[money-code]: images/IMG_37152.JPG
