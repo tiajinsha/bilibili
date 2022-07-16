@@ -1,0 +1,32 @@
+@import '@/assets/style/index.scss';
+.buttonBox {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    line-height: 25px;
+    align-items: center;
+    @extend .no-app-regin;
+    -webkit-user-drag: none;
+    &.clickCss {
+        color: var(--color-text);
+        border-radius: 5px;
+        &:hover {
+            background: var(--color-secondary-bg-for-transparent);
+        }
+        &:active {
+            transform: scale(0.92);
+        }
+    }
+    &.icon-hover:hover>span {
+        color: var( --color-primary);
+    }
+}
+
+.active {
+    color: var( --color-primary) !important;
+}
+
+.contentText {
+    font-size: 12px;
+}

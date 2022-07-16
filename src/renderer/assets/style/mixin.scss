@@ -1,0 +1,10 @@
+@mixin border-bottom-shadow() {
+    box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+}
+
+@mixin ellipsis($bum) {
+    text-overflow: ellipsis;
+    line-clamp: $bum;
+    -webkit-line-clamp: $bum;
+    -webkit-box-orient: vertical;
+}

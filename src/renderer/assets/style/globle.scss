@@ -1,0 +1,55 @@
+:root {
+    --color-body-bg: #ffffff;
+    --color-text: #000;
+    --color-primary: #fb7299;
+    --color-primary-bg: #eaeffd;
+    --color-secondary: #7a7a7b;
+    --color-secondary-bg: #f5f5f7;
+    --color-navbar-bg: rgba(255, 255, 255, 0.86);
+    --color-primary-bg-for-transparent: rgba(189, 207, 255, 0.28);
+    --color-secondary-bg-for-transparent: rgba(209, 209, 214, 0.28);
+    --html-overflow-y: overlay;
+    --slider-bar: #F6F7F8;
+}
+
+[data-theme='dark'] {
+    --slider-bar: #1c1d1f;
+    --color-body-bg: #222222;
+    --color-text: #ffffff;
+    --color-primary: #fb7299;
+    --color-primary-bg: #bbcdff;
+    --color-secondary: #7a7a7b;
+    --color-secondary-bg: #323232;
+    --color-navbar-bg: rgba(34, 34, 34, 0.86);
+    --color-primary-bg-for-transparent: rgba(255, 255, 255, 0.12);
+    --color-secondary-bg-for-transparent: rgba(255, 255, 255, 0.08);
+}
+
+.FlexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.PrimaryHover {
+    transition: all .2s ease;
+    &:hover {
+        color: var( --color-primary);
+    }
+}
+
+.is-active {
+    color: var( --color-primary) !important;
+}
+
+.app-region {
+    -webkit-app-region: drag;
+}
+
+.no-app-regin {
+    -webkit-app-region: none;
+}

@@ -1,0 +1,35 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "resolveJsonModule": true,
+       /*  "forceConsistentCasingInFileNames":true, */
+        "baseUrl": ".",
+        "outDir": "./dist/electron",
+        "sourceMap": true,
+        "declaration": false,
+        "module": "es2015",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es5",
+        "jsx": "react",
+        "paths": {
+            "@config/*": [
+                "config/*"
+            ],
+            "@/*":[
+                "src/renderer/*"
+            ]
+        },
+        "typeRoots": [
+            "node_modules/@types",
+            "customTypes/*"
+        ],
+        "lib": [
+            "es2018",
+            "dom"
+        ]
+    }
+}

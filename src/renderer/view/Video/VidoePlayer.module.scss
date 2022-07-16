@@ -1,0 +1,289 @@
+@import '@/assets/style/index.scss';
+.video-player {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+    .video-header {
+        width: 100%;
+        height: 50px;
+        background: #1c1d1f;
+        display: flex;
+        align-items: center;
+        @extend .app-region;
+        .gohome {
+            span {
+                font-size: 20px;
+            }
+            height: 30px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 9px;
+            margin-left: 100px;
+            font-weight: 600;
+            color: white;
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            background: #2a2b2e;
+            &:active,
+            &:hover {
+                background: var(--color-secondary-bg-for-transparent);
+            }
+        }
+    }
+    .vidoe-content {
+        display: flex;
+        width: 100%;
+        height: calc(100% - 50px);
+        background: #151618;
+        .video {
+            flex: 1;
+            background: var( --color-text);
+            overflow: hidden;
+            position: relative;
+            .right-close {
+                &:hover {
+                    background: var(--color-secondary-bg-for-transparent);
+                }
+                position: absolute;
+                width: 40px;
+                height: 60px;
+                text-align: center;
+                right: 0;
+                top: 0;
+                z-index: 1000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                bottom: 0;
+                margin: auto;
+                color: white;
+            }
+        }
+        .video-info {
+            /*    background: #17181a; */
+            overflow-x: hidden;
+            transition: flex .5s ease;
+            overflow-y: scroll;
+            .video-info-tab {
+                width: 100%;
+                height: 40px;
+                padding: 20px;
+                box-sizing: border-box;
+                /* awdawd */
+                color: var( --color-body-bg);
+                border-bottom: 1px solid rgba(100, 74, 74, 0.292);
+            }
+            .video-content {
+                width: 100%;
+                color: var( --color-body-bg);
+                padding: 20px;
+                .player-logo {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    height: 50px;
+                    .player-img {
+                        img {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                        }
+                    }
+                    .usernames {
+                        margin-left: 10px;
+                        width: 70%;
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                        .user {
+                            font-size: 15px;
+                            font-weight: bold;
+                        }
+                        .content {
+                            color: var( --color-navbar-bg);
+                            font-size: 13px;
+                            white-space: nowrap;
+                            -webkit-line-clamp: 1;
+                            -webkit-box-orient: vertical;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            word-break: break-word;
+                        }
+                    }
+                }
+                .player-context {
+                    display: flex;
+                    width: 100%;
+                    margin-top: 10px;
+                    color: var( --color-body-bg);
+                    overflow: hidden;
+                    .context {
+                        flex: 1;
+                        overflow: hidden;
+                        &>div:nth-child(1) {
+                            display: -webkit-box;
+                            overflow: hidden;
+                            -webkit-box-orient: vertical;
+                            text-overflow: -o-ellipsis-lastline;
+                            text-overflow: ellipsis;
+                            word-break: break-word;
+                            -webkit-line-clamp: 2;
+                            font-size: 14px;
+                            color: var( --color-body-bg);
+                            padding: 0;
+                            line-height: 20px;
+                            transition: color .3s;
+                            font-weight: 600;
+                        }
+                        &>div:nth-child(2) {}
+                    }
+                    .btn {
+                        flex: 0 0 90px;
+                        text-align: center;
+                        overflow: hidden;
+                        color: var( --color-navbar-bg);
+                    }
+                }
+                .video-text {
+                    height: 40px;
+                    width: 100%;
+                    &>.icon-wrapper:not(:first-child) {
+                        margin-left: 15px;
+                    }
+                    display: flex;
+                    align-items: center;
+                    .icon-wrapper {
+                        display: flex;
+                        overflow: hidden;
+                        flex-wrap: nowrap;
+                        color: rgba(255, 255, 255, 0.651);
+                        align-items: center;
+                        span {
+                            margin-left: 5px;
+                        }
+                    }
+                }
+                .btn-group {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;
+                    padding: 5px;
+                    color: var( --color-body-bg);
+                    .hoverbtn {
+                        width: 60px;
+                        padding: 5px;
+                        border-radius: 5px;
+                        &:hover {
+                            background: var(--color-secondary-bg-for-transparent);
+                        }
+                    }
+                }
+                .recomand-video {
+                    width: 100%;
+                    border-top: 1px solid rgba(100, 74, 74, 0.292);
+                    .videoList {
+                        height: 100px;
+                        width: 100%;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        display: flex;
+                        overflow: hidden;
+                        .wrapper {
+                            background: var(--color-secondary-bg);
+                            flex: 0 0 150px;
+                            position: relative;
+                            border-radius: 10px;
+                            overflow: hidden;
+                            .imgs {
+                                position: absolute;
+                                width: 100%;
+                                margin-bottom: 0;
+                                height: 100%;
+                                top: 0;
+                                left: 0;
+                                z-index: 1;
+                                opacity: 0;
+                                transition: opacity .3s ease;
+                                transform: translate3d(0, 0, 0);
+                            }
+                            .tv {
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                top: 0;
+                                left: 0;
+                                z-index: 0;
+                            }
+                            .videoBox {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                            }
+                            .videoTime {
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                width: 100%;
+                                z-index: 2;
+                                height: 20px;
+                                background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(33, 33, 33, 0)), to(rgba(33, 33, 33, .9)));
+                                div {
+                                    position: absolute;
+                                    right: 10px;
+                                    font-weight: 600;
+                                    color: var( --color-body-bg);
+                                }
+                            }
+                        }
+                        .content {
+                            flex: 1.5;
+                            overflow: hidden;
+                            box-sizing: border-box;
+                            padding-left: 10px;
+                            padding-right: 5px;
+                            .videoName {
+                                width: 200px;
+                                word-break: break-all;
+                                text-overflow: ellipsis;
+                                display: -webkit-box;
+                                -webkit-box-orient: vertical;
+                                -webkit-line-clamp: 2;
+                                overflow: hidden;
+                                font-size: 15px;
+                                height: 50%;
+                                font-weight: 600;
+                                color: var( --color-body-bg);
+                            }
+                            .upNames {
+                                width: 100%;
+                                height: 50%;
+                                color: var( --color-secondary);
+                                span {
+                                    margin-left: 5px;
+                                }
+                                .top {
+                                    display: flex;
+                                    align-items: center;
+                                }
+                                .bottom {
+                                    display: flex;
+                                    &>div:nth-child(2) {
+                                        margin-left: 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .loading {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

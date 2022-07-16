@@ -1,0 +1,25 @@
+@import '@/assets/style/index.scss';
+.command {
+    max-width: 1600px;
+    min-width: 500px;
+    margin: 0 auto;
+    margin-top: 14px;
+    .content {
+        width: 100%;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width:1600px) {
+    .content {
+        grid-template-columns: repeat(5, 1fr) !important;
+    }
+}
+
+@media (max-width:1300px) {
+    .content {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}

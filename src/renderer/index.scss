@@ -1,0 +1,53 @@
+@import './assets/style/index.scss';
+body,
+html,
+#root {
+    width: 100%;
+    height: 100%;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* *{
+    ::-webkit-scrollbar:0; 滚动条整体部分，可以设置宽度
+::-webkit-scrollbar-button:; 滚动条两端的按钮
+::-webkit-scrollbar-track:; 外层轨道
+::-webkit-scrollbar-track-piece:; 内层滚动槽
+::-webkit-scrollbar-thumb:; 滚动的滑块
+::-webkit-scrollbar-corner:; 边角
+::-webkit-resizer:; 定义右下角拖动块的样式
+} */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-button {}
+
+::-webkit-scrollbar-track {}
+
+::-webkit-scrollbar-track-piece {}
+
+::-webkit-scrollbar-thumb {}
+
+::-webkit-scrollbar-corner {}
+
+::-webkit-resizer {}
