@@ -1,0 +1,33 @@
+@import '@/assets/style/globle.scss';
+.Menu {
+    list-style: none;
+    display: flex;
+    margin-bottom: 0px;
+    padding-left: 0;
+    li {
+        padding: 0 15px 0;
+        display: block;
+        height: 100%;
+        align-items: center;
+        span {
+            @extend .PrimaryHover;
+        }
+        span {
+            font-size: 16px;
+            font-weight: 510;
+            position: relative;
+            &.subscript::before {
+                bottom: -13px;
+                content: '';
+                position: absolute;
+                display: block;
+                width: 20px;
+                left: 0;
+                right: 0;
+                margin: auto;
+                height: 3px;
+                background: var( --color-primary);
+            }
+        }
+    }
+}

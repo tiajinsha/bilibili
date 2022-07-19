@@ -1,0 +1,46 @@
+@import '@/assets/style/index.scss';
+.VideoComment {
+    width: 100%;
+    padding: 10px;
+    .content {
+        width: 100%;
+        display: flex;
+        box-sizing: border-box;
+        border-bottom: 1px solid rgba(100, 74, 74, 0.292);
+        padding-bottom: 20px;
+        .avtor {
+            float: left;
+            width: 40px;
+            img {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+            }
+        }
+        .rightContetn {
+            width: calc(100% - 40px);
+            float: left;
+            padding-left: 10px;
+            padding-right: 10px;
+            box-sizing: border-box;
+            text-overflow: ellipsis;
+            .username {
+                color: rgb(153, 140, 140);
+            }
+            .time {
+                color: rgba(142, 155, 146);
+            }
+            .content-text {
+                padding-right: 10px;
+                font-size: 14px;
+                line-height: 15px;
+                text-overflow: ellipsis;
+                border-radius: 9px;
+                color: aliceblue;
+                padding: 10px;
+                word-break: break-all;
+                background: #1d1d1f;
+            }
+        }
+    }
+}

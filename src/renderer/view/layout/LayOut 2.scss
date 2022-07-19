@@ -1,0 +1,55 @@
+@import '@/assets/style/index.scss';
+.app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: all 0.4s;
+}
+
+.rightSlider {
+    flex: 1;
+    background: var( --color-body-bg);
+    overflow: hidden;
+}
+
+.main {
+    width: 100%;
+    height: calc(100% - 70px);
+    overflow-y: auto;
+    padding: 0 15px 0 15px;
+    box-sizing: border-box;
+    scrollbar-width: none; // firefox
+    .backtoTop {
+        position: fixed;
+        bottom: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        background: var( --color-secondary-bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #E3E5E7;
+        right: 40px;
+        @include border-bottom-shadow()
+    }
+}
+
+.fade-enter {
+    opacity: 0;
+    z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-in;
+}
