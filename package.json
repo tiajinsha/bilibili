@@ -71,7 +71,7 @@
         "dotenv": "^6.2.0",
         "electron-updater": "^5.0.5",
         "express": "^4.17.2",
-        "file-type": "^10.6.0",
+        "file-type": "^16.5.4",
         "fs-extra": "^10.1.0",
         "hls.js": "^1.1.5",
         "mobx": "^6.6.1",
