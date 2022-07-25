@@ -8,7 +8,7 @@
   <p align="center">
     高仿Bilibili电脑客户端，支持windows，macOS。
     <br />
-    <a href="#%EF%B8%8F-安装" target="blank"><strong>📦️ 下载安装包</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://pan.baidu.com/s/1SRZF5Of_i3mzb6diUC0Jag?pwd=n2qa" target="blank"><strong>📦️ 下载安装包（提取码：n2qa）</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
     <br />
   </p>
