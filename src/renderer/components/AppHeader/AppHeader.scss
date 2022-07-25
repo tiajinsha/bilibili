@@ -1,0 +1,49 @@
+@import '@/assets/style/index.scss';
+.appHeader {
+    background: var( --color-body-bg);
+    width: 100%;
+    @extend .app-region;
+    height: 70px;
+    @include border-bottom-shadow();
+    display: flex;
+    .logoWrapper {
+        display: flex;
+        position: relative;
+        .logo {
+            position: absolute;
+            left: 30px;
+            top: 22px;
+        }
+        .menuWrapper {
+            margin-left: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            .list-group-item {
+                color: var(--color-text);
+                width: 100%;
+                height: 100%;
+                display: flex;
+                @extend .no-app-regin;
+                justify-content: center;
+                align-items: center;
+                transition: all .2s;
+                position: relative;
+                &.active {
+                    &::after {
+                        position: absolute;
+                        content: "";
+                        width: 100%;
+                        border-radius: 2px;
+                        background: var(--color-primary);
+                        top: 52px;
+                        height: 3px;
+                    }
+                }
+                &:hover {
+                    color: var( --color-primary);
+                }
+            }
+        }
+    }
+}

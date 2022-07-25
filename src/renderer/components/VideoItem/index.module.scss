@@ -1,0 +1,108 @@
+.content-item {
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-bottom: 82%;
+  height: 0;
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 10px;
+  .location-wrapper {
+    position: relative;
+    color: var(--color-secondary-bg);
+    border-radius: 8px;
+    background: var(--color-secondary-bg);
+    overflow: hidden;
+    &:hover {
+      .videoMsg {
+        opacity: 0;
+      }
+      .dart {
+        opacity: 0;
+      }
+    }
+    .video-wrapper {
+      transition: all 0.2s ease;
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 1000;
+    }
+    .pic {
+      width: 100%;
+      height: 140px;
+      transition: opacity 0.3s ease;
+    }
+    .dart {
+      transition: all 0.3s ease;
+      width: 100%;
+      opacity: 1;
+      position: absolute;
+      bottom: 0px;
+      height: 25px;
+      background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(rgba(33, 33, 33, 0)),
+        to(rgba(33, 33, 33, 0.5))
+      );
+    }
+    .videoMsg {
+      background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(rgba(33, 33, 33, 0)),
+        to(rgba(33, 33, 33, 0.5))
+      );
+      //  background: linear-gradient(180deg, rgba(33, 33, 33, 0), rgba(33, 33, 33, .5));
+      width: 100%;
+      opacity: 1;
+      position: absolute;
+      bottom: 0px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 5px;
+      padding-right: 6px;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      .leftMsg {
+        display: flex;
+        .videoSum {
+          display: flex;
+          align-items: center;
+          & > div:nth-child(2) {
+            margin-left: 5px;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+  .text-content {
+    height: 40%;
+    .content {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      font-weight: bold;
+      font-size: 100%;
+      line-height: 20px;
+      height: 40px;
+    }
+    .up-icon {
+      display: flex;
+      align-items: center;
+      .upcontent {
+        line-height: 0;
+        margin-left: 4px;
+      }
+    }
+  }
+}

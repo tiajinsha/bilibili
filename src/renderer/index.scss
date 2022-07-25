@@ -1,0 +1,49 @@
+@import './assets/style/index.scss';
+body,
+html,
+#root {
+    width: 100%;
+    height: 100%;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+a {
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-left: 1px solid rgba(128, 128, 128, 0.18);
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(128, 128, 128, 0.38);
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+    background: var(--color-secondary-bg);
+}

@@ -1,0 +1,11 @@
+version: 0.0.5
+files:
+  - url: electron-react-admin-0.0.1-mac.zip
+    sha512: a5OP5kH0OUZeftpmXW3Hh2gcY/fkoxQS1NI1GA7QzuzJwXTTUvRUX7OlU4Rgx5fQeOZCk7uLPFDP5LJwkU6yGA==
+    size: 89764615
+  - url: electron-react-admin-0.0.1.dmg
+    sha512: F6n/rbSMj+Ezn9FEZvhpq1tnON/OsTetNcjPhT+mbk66GVyOCWXs9qS/1sRaocd6Eh4wXafA1n8UdLJ64yWZsw==
+    size: 93339421
+path: electron-react-admin-0.0.1-mac.zip
+sha512: a5OP5kH0OUZeftpmXW3Hh2gcY/fkoxQS1NI1GA7QzuzJwXTTUvRUX7OlU4Rgx5fQeOZCk7uLPFDP5LJwkU6yGA==
+releaseDate: '2022-07-17T07:26:43.581Z'

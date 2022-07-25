@@ -1,0 +1,56 @@
+@import '@/assets/style/index.scss';
+.command {
+    max-width: 1600px;
+    min-width: 500px;
+    margin: 0 auto;
+    margin-top: 14px;
+    .command-header {
+        width: 100%;
+        height: 35px;
+        display: flex;
+        justify-content: start;
+        padding-left: 20px;
+        .tab {
+            margin-right: 5px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* padding: 2px; */
+            font-size: 13px;
+            padding-left: 10px;
+            text-align: center;
+            padding-right: 10px;
+            @extend .PrimaryHover;
+            &.is-select {
+                background: #FFECF1;
+                font-weight: 600;
+                color: var(--color-primary);
+            }
+            &:active {
+                background: #FFECF1;
+                font-weight: 600;
+                color: var(--color-primary);
+            }
+            &.active {}
+        }
+    }
+    .content {
+        width: 100%;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width:1600px) {
+    .content {
+        grid-template-columns: repeat(5, 1fr) !important;
+    }
+}
+
+@media (max-width:1300px) {
+    .content {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}

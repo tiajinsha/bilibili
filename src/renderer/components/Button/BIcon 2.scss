@@ -1,0 +1,34 @@
+@import '@/assets/style/index.scss';
+.buttonBox {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    line-height: 25px;
+    align-items: center;
+    -webkit-user-drag: none;
+    &.clickCss {
+        color: var(--color-text);
+        transition: 0.2s;
+        border-radius: 5px;
+        &:hover {
+            background: var(--color-secondary-bg-for-transparent);
+        }
+        &:active {
+            transform: scale(0.92);
+            transition: 0.2s;
+        }
+    }
+    &.icon-hover:hover>span {
+        color: var( --color-primary);
+        transition: all .1s ease;
+    }
+}
+
+.active {
+    color: var( --color-primary);
+}
+
+.contentText {
+    font-size: 12px;
+}

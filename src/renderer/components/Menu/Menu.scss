@@ -1,0 +1,36 @@
+@import '@/assets/style/globle.scss';
+.Menu {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+    margin: 0;
+    height: 100%;
+    li {
+        padding: 0 15px 0;
+        display: flex;
+        height: 100%;
+        align-items: center;
+        span {}
+        span {
+            font-size: 16px;
+            font-weight: 510;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+            &.subscript::before {
+                bottom: -13px;
+                content: '';
+                position: absolute;
+                display: block;
+                width: 20px;
+                left: 0;
+                top: 26px;
+                right: 0;
+                margin: auto;
+                height: 3px;
+                background: var( --color-primary);
+            }
+        }
+    }
+}
