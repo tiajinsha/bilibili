@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import "./index.scss";
-
+import { CSSTransition } from "react-transition-group"
 interface VidoeBoxProps {
   VideoDetail?: any;
   video: any;
@@ -24,6 +24,7 @@ const VidoeBox: React.FC<VidoeBoxProps> = forwardRef((props, ref) => {
   const [VideoData, setDate] = useState(null);
   const [hover, setHover] = useState(false);
   const [aId, setAid] = useState(null);
+  const [opacity,setOpcity]=useState(false)
   useEffect(() => {
     return () => {
       clearInterval(timer.current);
@@ -60,6 +61,7 @@ const VidoeBox: React.FC<VidoeBoxProps> = forwardRef((props, ref) => {
   };
   const onMouseLeaveEvent = () => {
     setHover(false);
+    setOpcity(false)
     if (timer.current) clearInterval(timer.current);
   };
   const onTransitionEnd = () => {
@@ -67,28 +69,33 @@ const VidoeBox: React.FC<VidoeBoxProps> = forwardRef((props, ref) => {
       setHover(false);
     }
   };
+  const  callback = ()=>{
+      setOpcity(true)
+  }
+  
   return (
     <>
-      <div
-        onTransitionEnd={onTransitionEnd}
-        className="video-wrapper"
-        style={{ opacity: hover ? "1" : "0" }}
-      >
-        {hover && VideoData && timer.current ? (
-          <VideoPlayer
-            preview
-            ref={VideoRef}
-            video={{
-              aId: VideoData.aId,
-              cId: VideoData.cId,
-              title: VideoData.title,
-              cover: VideoData.pic,
-              duration: VideoData.duration,
-              url: VideoData.url,
-            }}
-          />
-        ) : null}
-      </div>
+        <div
+          onTransitionEnd={onTransitionEnd}
+          className="video-wrapper"
+          style={{ opacity: hover &&  opacity ? "1" : "0" ,}}
+        >
+          {hover && VideoData && timer.current ? (
+            <VideoPlayer
+              preview
+              callback={callback}
+              ref={VideoRef}
+              video={{
+                aId: VideoData.aId,
+                cId: VideoData.cId,
+                title: VideoData.title,
+                cover: VideoData.pic,
+                duration: VideoData.duration,
+                url: VideoData.url,
+              }}
+            />
+          ) : null}
+        </div>
     </>
   );
 });

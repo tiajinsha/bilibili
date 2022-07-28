@@ -10,4 +10,5 @@ if (process.env.NODE_ENV !== 'development') {
 
 export const winURL = process.env.NODE_ENV === 'development' ? `http://localhost:${process.env.PORT}` : `file://${__dirname}/index.html`
 export const loadingURL = process.env.NODE_ENV === 'development' ? `http://localhost:${process.env.PORT}/static/loader.html` : `file://${__static}/loader.html`
+export const ligo3D = process.env.NODE_ENV === 'development' ? `http://localhost:${process.env.PORT}/static/dist/index.html` : `file://${__static}/dist/index.html`
 export const lib = process.env.libPath

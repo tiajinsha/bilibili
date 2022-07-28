@@ -28,6 +28,7 @@ interface VideoInfoState {
     RightMsgVisable: boolean,
     recommandVideo: Video[]
 }
+
 //解决重复请求问题
 var first: Boolean = true
 @inject('VideoDetail')

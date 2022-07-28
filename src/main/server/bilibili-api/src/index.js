@@ -3,6 +3,8 @@ require("./dotenv");
 const express = require("express");
 const bodyParser = require("body-parser");
 const routers = require("./routers");
+const path = require('path')
+
 
 const crossDomain = (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -13,10 +15,7 @@ const crossDomain = (req, res, next) => {
 
 
 const app = express();
-
-if (process.env.NODE_ENV !== "production") {
-    app.use(express.static("./"));
-}
+app.use(express.static(path.join(__dirname, './dist')))
 
 app.use(bodyParser.json());
 

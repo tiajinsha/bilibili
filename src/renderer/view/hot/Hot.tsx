@@ -3,9 +3,9 @@
 import React, { useRef, useState } from "react"
 import command from "./Hot.module.scss"
 import { InfiniteScroll } from 'antd-mobile'
-import { observer, inject  } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import VideoElements from "@/components/VideoItem/VideoItem"
-import TabMenu  from "@/components/TabMenu/TabMenu"
+import TabMenu from "@/components/TabMenu/TabMenu"
 
 interface HotProps {
     indexStore?: any
@@ -23,7 +23,7 @@ const Hot: React.FC<HotProps> = ({ hootStore }) => {
         if (first.current) {
             await getRankingVideoList.bind(hootStore)(select.id)
             setHasMore(false)
-            first.current=false
+            first.current = false
         }
     }
 
@@ -39,13 +39,15 @@ const Hot: React.FC<HotProps> = ({ hootStore }) => {
 
     const tabBarData = [].concat(RankingPartitions);
     return (
-        <div className={command.command}>
-            <TabMenu select={select.name} handleClick={handleClick} data={tabBarData} style={undefined}></TabMenu>
-            <div className={command['content']}>
-                <VideoElements data={RankingVideos} />
+        <div id="main" className="main">
+            <div className={command.command}>
+                <TabMenu select={select.name} handleClick={handleClick} data={tabBarData} style={undefined}></TabMenu>
+                <div className={command['content']}>
+                    <VideoElements data={RankingVideos} />
+                </div>
+                <InfiniteScroll loadMore={loadMore} hasMore={hasMore}>
+                </InfiniteScroll>
             </div>
-            <InfiniteScroll loadMore={loadMore} hasMore={hasMore}>
-            </InfiniteScroll>
         </div>
     )
 

@@ -41,6 +41,7 @@ const sendMsg = (msg) => {
         `style="width: 1rem; vertical-align: middle" /> x ${msg.data.num}`;
       break;
     case "WELCOME":
+      alert()
        console.log(`${msg.data.uname} 进入直播间`);
       const isSvip = msg.data.svip ? true : false;
       isSvip ? div.classList.add(style.svip) : div.classList.add(style.vip);
@@ -50,7 +51,6 @@ const sendMsg = (msg) => {
       break;
     // 其它通知类型
     default:
-      console.log(msg);
   }
   // 延时执行，避免并发造成dom计算不准确
   setTimeout(() => {

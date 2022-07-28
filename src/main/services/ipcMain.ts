@@ -3,10 +3,31 @@ import Server from '../server'
 import { winURL } from '../config/StaticPath'
 import DownloadFile from './downloadFile'
 import Update from './checkupdate';
-
+import { ligo3D } from '../config/StaticPath';
+var newWin
 export default {
   Mainfunc(IsUseSysTitle: boolean) {
     const updater = new Update();
+    ipcMain.on('open3D', (event, args) => {
+      if (newWin) {
+        newWin.focus() // 存在 则聚焦
+        return
+      }
+      newWin = new BrowserWindow({
+        width: 900,
+        height: 620,
+        minWidth: 900,
+        minHeight: 620,
+        frame: true,//是否显示边缘框
+        fullscreen: true, //是否全屏显示
+        title: "web3D 多人联机demo",
+        autoHideMenuBar: true
+      })
+      newWin.loadURL("http://localhost:25565")  // 此处写 你要打开的路由地址
+      newWin.on('close', () => {
+        newWin = null
+      })
+    })
     ipcMain.handle('IsUseSysTitle', async (event: IpcMainInvokeEvent, args: unknown) => {
       return IsUseSysTitle
     })
@@ -87,8 +108,8 @@ export default {
           contextIsolation: false,
           webSecurity: false,
           // 如果是开发模式可以使用devTools
-         // devTools: process.env.NODE_ENV === 'development',
-           devTools: true,
+          // devTools: process.env.NODE_ENV === 'development',
+          devTools: true,
           // 在macos中启用橡皮动画
           scrollBounce: process.platform === 'darwin'
         }
@@ -97,9 +118,9 @@ export default {
       ChildWin.webContents.once('dom-ready', () => {
         ChildWin.show()
         ChildWin.webContents.openDevTools({ mode: 'undocked', activate: true })
-    /*     if (process.env.NODE_ENV === 'development') {
-          ChildWin.webContents.openDevTools({ mode: 'undocked', activate: true })
-        } */
+        /*     if (process.env.NODE_ENV === 'development') {
+              ChildWin.webContents.openDevTools({ mode: 'undocked', activate: true })
+            } */
         ChildWin.webContents.send('send-data', arg.sendData)
         if (arg.IsPay) {
           // 检查支付时候自动关闭小窗口

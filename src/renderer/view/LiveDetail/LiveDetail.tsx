@@ -36,7 +36,7 @@ var first: Boolean = true
 @observer
 export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfoState> {
     private VideoRef: React.RefObject<VideoPlayer>;
-    private onlineNumRef: React.RefObject<HTMLSpanElement>
+    private onlineNumRef
     private chatWebSocket:ChatWebSocket
     constructor(props) {
         let params = window.location.hash?.split("/")
@@ -95,10 +95,9 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
                 if (result.code === "1") {
                     const url = `wss://${result.data.host}/sub`;
                     this.chatWebSocket = new ChatWebSocket(url, roomData.live.roomId as number);
-                    /*     chatWebSocket.on(Events.HEARTBEAT_REPLY, ({ onlineNum }) => {
-                             this.onlineNumRef.current.innerHTML = `人气：${formatTenThousand(onlineNum)}`;
+                       this.chatWebSocket.on(Events.HEARTBEAT_REPLY, ({ onlineNum }) => {
+                           //  this.onlineNumRef.current.innerHTML = `人气：${(onlineNum)}`;
                         });
-     */
                     this.chatWebSocket.on(Events.MESSAGE_RECEIVE, (data) => {
                         data.forEach(function (item) {
                             sendMsg(item);
@@ -115,24 +114,13 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
             })
         }
     }
-
-    /*     tabClick = (index: any) => {
-            if (index === '0') {
-                this.setState({
-                    tabIndex: 0
-                })
-            } else {
-                this.setState({
-                    tabIndex: 1
-                })
-            }
-        } */
     goHome = () => {
         window.history.back()
     }
     render(): React.ReactNode {
         const { liveStore: { RoomData }, viedoContext: { _currentValue: { picURL } } } = this.props
         const { loading } = this.state
+        console.log(RoomData,'RoomData')
         return (
             <div className={styles['video-player']}>
                 <div className={styles['video-header']}>
@@ -159,16 +147,6 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
                         }
                     </div>
                     <div className={styles['video-info']}>
-                        {/*        <div className={styles['video-info-tab']}>
-                            <Menu defaultIndex="0" onClickx={this.tabClick}>
-                                <MenuItem >
-                                    简介
-                                </MenuItem>
-                                <MenuItem >
-                                    评论
-                                </MenuItem>
-                            </Menu>
-                        </div> */}
                         <div className={styles['video-content']}>
                             {
                                 RoomData && loading ? <LiveMsgList description={RoomData.description} /> : null

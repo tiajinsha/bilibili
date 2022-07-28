@@ -25,7 +25,7 @@ interface ClassiFicationProps {
 
 
 const ClassiFication: React.FC<ClassiFicationProps> = ({ indexStore }) => {
-    const { loadRepos, indexVideoObj,setrankingVideos, Partitions, getloadPartionData, typeVideoObjectData } = indexStore
+    const { loadRepos, indexVideoObj, setrankingVideos, Partitions, getloadPartionData, typeVideoObjectData } = indexStore
     const [select, setSelect] = useState('动画')
     const [hasMore, setHasMore] = useState(true)
     const [twoTitle, setTtitle] = useState(null)
@@ -87,16 +87,18 @@ const ClassiFication: React.FC<ClassiFicationProps> = ({ indexStore }) => {
 
     const tabBarData = [].concat(Partitions);
     return (
-        <div className={command.command}>
-            <TabMenu select={select} handleClick={handleClick1} data={tabBarData} style={undefined}></TabMenu>
-            {
-                twoTitle ? <TabMenu style={{ marginTop: "10px" }} select={twoTitleSelected} handleClick={handleClick2} data={twoTitle}></TabMenu> : null
-            }
-            <div className={command['content']}>
-                <VideoElements data={typeVideoObjectData.videos} />
+        <div id="main" className="main">
+            <div className={command.command}>
+                <TabMenu select={select} handleClick={handleClick1} data={tabBarData} style={undefined}></TabMenu>
+                {
+                    twoTitle ? <TabMenu style={{ marginTop: "10px" }} select={twoTitleSelected} handleClick={handleClick2} data={twoTitle}></TabMenu> : null
+                }
+                <div className={command['content']}>
+                    <VideoElements data={typeVideoObjectData.videos} />
+                </div>
+                <InfiniteScroll loadMore={loadMore} hasMore={hasMore}>
+                </InfiniteScroll>
             </div>
-            <InfiniteScroll loadMore={loadMore} hasMore={hasMore}>
-            </InfiniteScroll>
         </div>
 
     )

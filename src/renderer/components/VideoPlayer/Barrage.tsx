@@ -133,7 +133,7 @@ class Barrage extends React.PureComponent<BarrageProps> {
     const style: any = {
       position: "absolute",
       fontFamily: "黑体",
-      fontSize: "1.2rem",
+      fontSize: this.fontSize,
       fontWeight: "bold",
       whiteSpace: "pre",
       textShadow: "rgb(0, 0, 0) 1px 1px 2px",

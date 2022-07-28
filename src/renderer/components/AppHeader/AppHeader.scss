@@ -9,6 +9,9 @@
     .logoWrapper {
         display: flex;
         position: relative;
+        &.is-fcous {
+            background: red;
+        }
         .logo {
             position: absolute;
             left: 30px;

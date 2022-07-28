@@ -18,6 +18,7 @@ interface VideoPlayerProps {
   isLive?: boolean;
   preview?: boolean
   liveTime?: number;
+  callback?:()=>void;
   autoPlay?: boolean
   video: {
     aId: number,
@@ -113,6 +114,9 @@ class VideoPlayer extends React.PureComponent<VideoPlayerProps, VideoPlayerState
     const currentTimeDOM = this.currentTimeRef.current;
     const progressDOM = this.progressRef.current;
     const play = () => {
+      if(this.props.callback){
+        this.props.callback()
+      }
       this.setState({
         isShowCover: false,
         paused: false,
@@ -424,7 +428,7 @@ class VideoPlayer extends React.PureComponent<VideoPlayerProps, VideoPlayerState
           style={videoStyle}
           ref={this.videoRef} />
         <div className={style.barrage}>
-          <Barrage opacity={live === false ? 0.75 : 1} ref={this.barrageRef} />
+          <Barrage fontSize={this.props.preview ? "0.8rem" : "1.2rem"} opacity={live === false ? 0.75 : 1} ref={this.barrageRef} />
         </div>
         <div className={style.controls} onClick={() => { this.showOrHideControls(); }}>
           <div className={style['play-button'] + " " + playBtnClass} style={playBtnStyle}

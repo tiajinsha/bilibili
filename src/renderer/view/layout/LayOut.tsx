@@ -8,20 +8,16 @@ import { TransitionGroup, CSSTransition } from "react-transition-group"
 const LayOut: FC = (props) => {
     const outlet = useOutlet()
     const location = useLocation();
-    const onScroll=()=>{
-    }
     return (
         <div className="app">
             <SliderBar></SliderBar>
             <div className="rightSlider">
                 <AppHeader></AppHeader>
-                <div id="main" className="main"  onScroll={onScroll}>
-                    <TransitionGroup>
-                        <CSSTransition key={location.pathname} classNames="fade" timeout={200}>
+                <TransitionGroup style={{ width: "100%", height: "100%" }}>
+                    <CSSTransition key={location.pathname} classNames="fade" timeout={200}>
                             {outlet}
-                        </CSSTransition>
-                    </TransitionGroup>
-                </div>
+                    </CSSTransition>
+                </TransitionGroup>
             </div>
         </div>
     );

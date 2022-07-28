@@ -7,7 +7,16 @@ import { observer, inject } from 'mobx-react';
 import styleItem from "@/components/VideoItem/index.module.scss"
 import { NavLink } from "react-router-dom";
 import BIcon from "@/components/Button/BIcon";
-
+const style: React.CSSProperties = {
+    height: 40,
+    width: 40,
+    lineHeight: '40px',
+    borderRadius: 4,
+    backgroundColor: '#1088e9',
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 14,
+};
 interface HotProps {
     indexStore?: any
     viedoContext?: any
@@ -37,31 +46,33 @@ const Live: React.FC<HotProps> = ({ liveStore }) => {
     }
 
     return (
-        <div className={command.command}>
-            <div className={command['content']}>
-                {
-                    LiveList?.map((item, index) => {
-                        return <div className={styleItem['content-item']} key={index}>
-                            <NavLink to={`/LiveDetail/${item.roomId}`} className={styleItem['link-item']} >
-                                <div className={styleItem['location-wrapper']} >
-                                    <img loading="lazy" alt={"awdawd"} src={item.cover} className={styleItem['pic']} onLoad={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "1" }} />
-                                    <div className={styleItem['videoMsg']}>
+        <div id="main" className="main">
+            <div className={command.command}>
+                <div className={command['content']}>
+                    {
+                        LiveList?.map((item, index) => {
+                            return <div className={styleItem['content-item']} key={index}>
+                                <NavLink to={`/LiveDetail/${item.roomId}`} className={styleItem['link-item']} >
+                                    <div className={styleItem['location-wrapper']} >
+                                        <img loading="lazy" alt={"awdawd"} src={item.cover} className={styleItem['pic']} onLoad={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "1" }} />
+                                        <div className={styleItem['videoMsg']}>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                                <div className={styleItem['text-content']}>
+                                    <div className={styleItem['content']}>{item.title}</div>
+                                    <div className={styleItem['up-icon']}>
+                                        <BIcon iconName="UPzhu" size={18} type="hover"></BIcon>
+                                        <div className={styleItem['upcontent']}> {item.upUser.name}· 6-23</div>
                                     </div>
                                 </div>
-                            </NavLink>
-                            <div className={styleItem['text-content']}>
-                                <div className={styleItem['content']}>{item.title}</div>
-                                <div className={styleItem['up-icon']}>
-                                    <BIcon iconName="UPzhu" size={18} type="hover"></BIcon>
-                                    <div className={styleItem['upcontent']}> {item.upUser.name}· 6-23</div>
-                                </div>
                             </div>
-                        </div>
-                    })
-                }
+                        })
+                    }
+                </div>
+                <InfiniteScroll loadMore={loadMore} hasMore={hasMore}>
+                </InfiniteScroll>
             </div>
-            <InfiniteScroll  loadMore={loadMore} hasMore={hasMore}>
-            </InfiniteScroll>
         </div>
     )
 }

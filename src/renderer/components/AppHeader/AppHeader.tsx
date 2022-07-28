@@ -14,14 +14,12 @@ const AppHeader = () => {
   }
   return (
     <div className="appHeader">
-      <div className={classNames('logoWrapper', {
-        'is-fcous': !Focus
-      })}>
+      <div className={classNames('logoWrapper')}>
         <div className="logo FlexCenter">
           <BIcon iconName="bilibili"  size={30} active></BIcon>
         </div>
         {
-          !Focus ? <div className="menuWrapper">
+          !Focus ? <div className="menuWrapper" >
             <Menu>
               <MenuItem disabled>
                 <NavLink className="list-group-item" to="/">推荐</NavLink>

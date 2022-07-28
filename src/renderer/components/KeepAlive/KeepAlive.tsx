@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom'
 import { equals, isNil, map, filter, propEq, findIndex } from 'ramda'
 import { useUpdate } from 'ahooks'
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import {
     JSXElementConstructor,
     memo,

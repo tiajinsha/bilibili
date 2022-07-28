@@ -5,7 +5,6 @@ import { observer, inject } from 'mobx-react';
 import VideoElements from "@/components/VideoItem/VideoItem"
 
 
-
 const style: React.CSSProperties = {
     height: 40,
     width: 40,
@@ -36,17 +35,15 @@ const Command: React.FC<CommandProps> = ({ indexStore }) => {
             setHasMore(false)
         }
     }
-
-
-
     return (
-        <div className={command.command}>
-
-            <div className={command['content']}>
-                <VideoElements data={rankingVideos} />
+        <div id="main" className="main">
+            <div className={command.command}>
+                <div className={command['content']}>
+                    <VideoElements data={rankingVideos} VideoDetail={undefined} />
+                </div>
+                <InfiniteScroll loadMore={loadMore} hasMore={hasMore}>
+                </InfiniteScroll>
             </div>
-            <InfiniteScroll  loadMore={loadMore} hasMore={hasMore}>
-            </InfiniteScroll>
         </div>
     )
 
