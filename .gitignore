@@ -1,5 +1,4 @@
-.DS_Store
-node_modules
+node_modules/
 /dist/
 build
 build/win-ia32-unpacked/
@@ -7,12 +6,3 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-electron-vue-template-ts.7z
-server/client/electron-vue-admin Setup 0.0.1.exe
