@@ -25,28 +25,25 @@ const sendMsg = (msg) => {
   }
   const div = document.createElement("div");
   div.className = style['chat-msg'];
-  switch(msg.cmd) {
+  console.log(msg)
+  switch (msg.cmd) {
     case "DANMU_MSG":
-      // console.log(`${msg.info[2][1]}: ${msg.info[1]}`);
-      const manager = msg.info[2][2] === 1 ? `<span class="${style['msg-manager']}">房管</span>`: "";
+      const manager = msg.info[2][2] === 1 ? `<span class="${style['msg-manager']}">房管</span>` : "";
       div.innerHTML = `${manager}<span class="${style['msg-name']}">${msg.info[2][1]}: </span>` +
         `${msg.info[1]}`;
       break;
     case "SEND_GIFT":
-      // console.log(`${msg.data.uname} ${msg.data.action} ${msg.data.num} 个 ${msg.data.giftName}`);
       div.classList.add(style.gift);
       const gift = gifts.find((gift) => gift.id === msg.data.giftId);
       div.innerHTML = `<span class="${style['msg-name']}">${msg.data.uname} </span>` +
         `${msg.data.action}${msg.data.giftName} <img src="${gift.img}"` +
-        `style="width: 1rem; vertical-align: middle" /> x ${msg.data.num}`;
+        `style="width: 2rem; vertical-align: middle" /> x ${msg.data.num}`;
       break;
-    case "WELCOME":
-      alert()
-       console.log(`${msg.data.uname} 进入直播间`);
-      const isSvip = msg.data.svip ? true : false;
+    case "INTERACT_WORD":
+      const isSvip = true;
       isSvip ? div.classList.add(style.svip) : div.classList.add(style.vip);
-      const call = isSvip ? "年费老爷" : "老爷";
-      div.innerHTML = `<span class="${style['msg-name']}">${msg.data.uname} ${call} </span>` +
+      //const call = isSvip ? "年费老爷" : "老爷";
+      div.innerHTML = `<span class="${style['msg-name']}">${msg.data.uname}  </span>` +
         `进入直播间`;
       break;
     // 其它通知类型
@@ -75,9 +72,7 @@ function LiveMsgList(props: TabProps) {
   const chatRef: React.RefObject<HTMLDivElement> = useRef(null);
 
   useEffect(() => {
-
     chatDOM = chatRef.current;
-
     // 消息超过1000条，进行清理
     setInterval(() => {
       const children = chatDOM.children;
@@ -91,7 +86,7 @@ function LiveMsgList(props: TabProps) {
 
     getRoomGifts().then((result) => {
       if (result.code === "1") {
-        console.log(result.data,"gifts")
+        console.log(result.data, "gifts")
         gifts = result.data;
       }
     });
@@ -112,7 +107,7 @@ function LiveMsgList(props: TabProps) {
       </div>
       <div className={style['tab-content-wrapper']}>
         {/* 互动 */}
-        <div className={style['tab-content']} style={{display: (index === 0 ? "block" : "none")}}>
+        <div className={style['tab-content']} style={{ display: (index === 0 ? "block" : "none") }}>
           <div className={style['chat-container']} ref={chatRef}>
             {/* <div className={style.chatMsg}>
               <span className={style.msgManager}>房管</span>
@@ -139,8 +134,8 @@ function LiveMsgList(props: TabProps) {
           </div>
         </div>
         {/* 简介 */}
-        <div className={style['tab-content']} style={{display: (index === 1 ? "block" : "none")}}>
-          <div className={style.desc} dangerouslySetInnerHTML={{__html: description}}></div>
+        <div className={style['tab-content']} style={{ display: (index === 1 ? "block" : "none") }}>
+          <div className={style.desc} dangerouslySetInnerHTML={{ __html: description }}></div>
         </div>
       </div>
     </div>
@@ -150,3 +145,87 @@ function LiveMsgList(props: TabProps) {
 export default LiveMsgList;
 
 export { sendMsg };
+
+/* 
+{
+  "cmd": "ENTRY_EFFECT",
+  "data": {
+      "id": 4,
+      "uid": 336516571,
+      "target_id": 51628309,
+      "mock_effect": 0,
+      "face": "https://i1.hdslb.com/bfs/face/19b308eebadf7474208aa8a6c8bf29e9e9328694.jpg",
+      "privilege_type": 3,
+      "copy_writing": "欢迎舰长 <%仁川曼基康康康%> 进入直播间",
+      "copy_color": "#ffffff",
+      "highlight_color": "#E6FF00",
+      "priority": 1,
+      "basemap_url": "https://i0.hdslb.com/bfs/live/mlive/11a6e8eb061c3e715d0a6a2ac0ddea2faa15c15e.png",
+      "show_avatar": 1,
+      "effective_time": 2,
+      "web_basemap_url": "https://i0.hdslb.com/bfs/live/mlive/11a6e8eb061c3e715d0a6a2ac0ddea2faa15c15e.png",
+      "web_effective_time": 2,
+      "web_effect_close": 0,
+      "web_close_time": 0,
+      "business": 1,
+      "copy_writing_v2": "欢迎舰长 <%仁川曼基康康康%> 进入直播间",
+      "icon_list": [],
+      "max_delay_time": 7,
+      "trigger_time": 1659071168449502500,
+      "identities": 6,
+      "effect_silent_time": 0,
+      "effective_time_new": 0,
+      "web_dynamic_url_webp": "",
+      "web_dynamic_url_apng": "",
+      "mobile_dynamic_url_webp": ""
+  }
+} 
+
+{
+    "cmd": "ONLINE_RANK_COUNT",
+    "data": {
+        "count": 2689
+    }
+}
+{
+    "cmd": "INTERACT_WORD",
+    "data": {
+        "contribution": {
+            "grade": 0
+        },
+        "dmscore": 12,
+        "fans_medal": {
+            "anchor_roomid": 23928718,
+            "guard_level": 0,
+            "icon_id": 0,
+            "is_lighted": 1,
+            "medal_color": 9272486,
+            "medal_color_border": 9272486,
+            "medal_color_end": 9272486,
+            "medal_color_start": 9272486,
+            "medal_level": 12,
+            "medal_name": "3O1",
+            "score": 31954,
+            "special": "",
+            "target_id": 6519988
+        },
+        "identities": [
+            3,
+            1
+        ],
+        "is_spread": 0,
+        "msg_type": 1,
+        "privilege_type": 0,
+        "roomid": 23197314,
+        "score": 1659113762803,
+        "spread_desc": "",
+        "spread_info": "",
+        "tail_icon": 0,
+        "timestamp": 1659071808,
+        "trigger_time": 1659071807813705200,
+        "uid": 22837195,
+        "uname": "Patriky",
+        "uname_color": ""
+    }
+}
+*/

@@ -101,8 +101,14 @@ let rendererConfig = {
     target: 'electron-renderer'
 }
 rendererConfig.module.rules = rendererConfig.module.rules.concat(styleLoaders({ sourceMap: process.env.NODE_ENV !== 'production' ? config.dev.cssSourceMap : false, extract: IsWeb, minifyCss: process.env.NODE_ENV === 'production' }))
-
-rendererConfig.module.rules.push({ test: /\.ts[x]?$/, use: [{ loader: 'esbuild-loader', options: { loader: 'tsx' } }] })
+IsWeb ?
+    rendererConfig.module.rules.push({
+        test: /\.(js|ts|tsx)$/,
+        use: [
+            { loader: 'babel-loader' },
+        ]
+    }) :
+    rendererConfig.module.rules.push({ test: /\.ts[x]?$/, use: [{ loader: 'esbuild-loader', options: { loader: 'tsx' } }] })
 
 
 /**

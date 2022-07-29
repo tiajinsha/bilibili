@@ -1,6 +1,6 @@
 import LayOut from "@/view/layout/LayOut";
-import React, { lazy } from "react";
-import { HashRouter, RouteObject, useRoutes, Navigate } from "react-router-dom";
+import React from "react";
+import { HashRouter, RouteObject, useRoutes } from "react-router-dom";
 import DynaMic from "@/view/dynamic/DynaMic";
 import My from "@/view/my/My";
 import UserInfo from "@/view/userInfo/userInfo";
@@ -11,10 +11,7 @@ import Live from "@/view/live/Live";
 import Hot from "@/view/hot/Hot";
 import VideoInfo from "@/view/Video/VideoInfos";
 import LiveDetail from "@/view/LiveDetail/LiveDetail";
-import {
-    Provider,
-    KeepAlive,
-} from 'react-keep-alive';
+
 
 export const InnerRoute = () => {
     const routeList: RouteObject[] = [
