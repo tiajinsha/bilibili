@@ -23,7 +23,7 @@ export default {
         title: "web3D 多人联机demo",
         autoHideMenuBar: true
       })
-      newWin.loadURL("http://localhost:25565")  // 此处写 你要打开的路由地址
+      newWin.loadURL(ligo3D)  // 此处写 你要打开的路由地址
       newWin.on('close', () => {
         newWin = null
       })

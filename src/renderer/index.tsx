@@ -11,7 +11,7 @@ export const context = {
   picURL: "http://localhost:25565" + "/transfer/image",
   videoURL: "http://localhost:25565" + "/transfer/mp4"
 };
-
+// aws-sdk requires global to exist
 const viedoContext = React.createContext(context);
 
 root.render(

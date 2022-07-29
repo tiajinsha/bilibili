@@ -18,7 +18,7 @@ export class LiveStore {
     constructor() {
     }
     @action
-    async LiveIndexData(aId: number) {
+    async LiveIndexData() {
         return getLiveIndexData().then((result) => {
             if (result.code === "1") {
                 const moduleList = result.data.module_list;
@@ -69,7 +69,7 @@ export class LiveStore {
     }
 
     @action
-    async getRoomData(roomId: number) {
+    async getRoomData(roomId) {
         const promises = [api.getRoomInfo(roomId), api.getLivePlayUrl(roomId)];
         return Promise.all(promises).then(([result1, result2]) => {
             if (result1.code === "1") {
