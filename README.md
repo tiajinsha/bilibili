@@ -3,10 +3,10 @@
   <a href="https://github.com/tiajinsha/bilibili-app" target="blank">
     <img src="images/logo.png" alt="Logo" width="250" height="156">
   </a>
-  <h2 align="center" style="font-weight: 600">BiliBili</h2>
+  <h2 align="center" style="font-weight: 600">bilibili</h2>
 
   <p align="center">
-    高仿Bilibili电脑客户端，支持windows，macOS。
+    高仿bilibili电脑客户端，支持windows，macOS,支持B站视频，和直播弹幕。
     <br />
     <a href="https://pan.baidu.com/s/1SRZF5Of_i3mzb6diUC0Jag?pwd=n2qa" target="blank"><strong>📦️ 下载安装包（提取码：n2qa）</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
