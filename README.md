@@ -53,10 +53,13 @@ yarn build
 
 API 源代码来自 [fython/BilibiliAPIDocs](https://github.com/fython/BilibiliAPIDocs)
 
-## 🖼️ 截图
-
+# 高仿B站hover视频预览+弹幕
 ![artist][artist-screenshot]
+# 视频详情
 ![explore][explore-screenshot]
+# 直播详情
+![explore][explore-live]
+
 <img src="images/IMG_37152.JPG" style="width:100%;height:100%" alt="Logo" width="250" height="156">
 
 <!-- MARKDOWN LINKS & IMAGES -->
@@ -65,4 +68,5 @@ API 源代码来自 [fython/BilibiliAPIDocs](https://github.com/fython/BilibiliA
 [album-screenshot]: images/home.png
 [artist-screenshot]: images/hover.png
 [explore-screenshot]: images/video.png
+[explore-live]: images/live.png
 [money-code]: images/IMG_37152.JPG
