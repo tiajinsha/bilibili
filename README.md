@@ -14,7 +14,7 @@
   </p>
 </p>
 
-[album][album-screenshot]
+![album][album-screenshot]
 
 ## ✨ 特性
 
