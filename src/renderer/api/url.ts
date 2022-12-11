@@ -16,6 +16,9 @@ const URL_VIDEO_REPLAY = "/av/replay";
 const URL_VIDEO_BARRAG = "/av/barrage";
 const URL_PLAY_URL =  "/av/play_url";
 
+const FetchVideoShot =  "/av/fetchVideoShot";
+
+
 const URL_UP_USER = "/up";
 const URL_USER_VIDEO =  "/up/video";
 
@@ -40,6 +43,7 @@ export {
   URL_RANKING_ARCHIVE,
   URL_RANKING_PARTITION,
   URL_VIDEO_DETAIL,
+  FetchVideoShot,
   URL_VIDEO_RECOMMEND,
   URL_VIDEO_REPLAY,
   URL_VIDEO_BARRAG,

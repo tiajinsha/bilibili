@@ -4,7 +4,7 @@ import { createVideo, Video } from "@/models";
 import { inject, observer } from "mobx-react";
 import React, { createContext } from "react";
 import styles from "./VidoePlayer.module.scss"
-import { getRecommendVides, getComments, getBarrages } from "@/api/index";
+import { getRecommendVides, getComments, getBarrages, getFetchVideoShot } from "@/api/index";
 import BIcon from "@/components/Button/BIcon";
 import { Spin } from "antd";
 import VideoSlider from "./VideoSlider";
@@ -75,9 +75,10 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
         let res = await this.props.VideoDetail.getVideoDetail(aId)
         let result = await getRecommendVides(res.aId)
         let Barrages = await getBarrages(res.cId)
+        let shots = await getFetchVideoShot(aId)
+        console.log(shots, 'shots')
         if (Barrages.msg === "success" && Barrages.data.length) {
             Barrages.data.forEach(element => {
-                console.log(element.type)
                 BarragesList.push({
                     text: element.content, // 弹幕文本
                     time: Number(element.time), // 发送时间，单位秒
@@ -88,7 +89,6 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
             });
 
         }
-        console.log(BarragesList, 'Barrages')
         var art = null
         this.setState({
             loading: true,
@@ -105,6 +105,11 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
                 fullscreen: true,
                 fullscreenWeb: true,
                 miniProgressBar: true,
+                thumbnails: shots.data && shots.data.image.length ? {
+                    url: shots.data.image[0],
+                    number: shots.data.index.length,
+                    column: shots.data.img_x_len,
+                } : null,
                 plugins: [
                     artplayerPluginDanmuku({
                         danmuku: BarragesList,

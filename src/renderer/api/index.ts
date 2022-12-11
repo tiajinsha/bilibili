@@ -1,7 +1,7 @@
 import service from "@/utils/request"
 import fetch from "cross-fetch";
 import { getJSON } from "./fetchjson";
-import { URL_INDEX, URL_ROUND_SOWING, URL_PARTITION, URL_RANKING_PARTITION, URL_RANKING, URL_RANKING_REGION, URL_RANKING_ARCHIVE, URL_VIDEO_DETAIL, URL_PLAY_URL, URL_VIDEO_BARRAG, URL_VIDEO_RECOMMEND, URL_VIDEO_REPLAY, URL_LIVE_DATA, URL_LIVE_LIST, URL_LIVE_PLAY_URL, URL_LIVE_ROOM_INFO, URL_UP_USER, URL_USER_VIDEO, URL_LIVE_DANMU_CONFIG, URL_LIVE_ROOM_GIFT, } from "./url";
+import { URL_INDEX,FetchVideoShot, URL_ROUND_SOWING, URL_PARTITION, URL_RANKING_PARTITION, URL_RANKING, URL_RANKING_REGION, URL_RANKING_ARCHIVE, URL_VIDEO_DETAIL, URL_PLAY_URL, URL_VIDEO_BARRAG, URL_VIDEO_RECOMMEND, URL_VIDEO_REPLAY, URL_LIVE_DATA, URL_LIVE_LIST, URL_LIVE_PLAY_URL, URL_LIVE_ROOM_INFO, URL_UP_USER, URL_USER_VIDEO, URL_LIVE_DANMU_CONFIG, URL_LIVE_ROOM_GIFT, } from "./url";
 // 获取首页内容
 export function getContent() {
     return service({
@@ -55,6 +55,11 @@ export function getRankingRegion(params) {
         method: 'get',
         params
     });
+}
+// 获取分类排行
+export function getFetchVideoShot(aId) {
+    return getJSON(FetchVideoShot + `/${aId}`, null);
+
 }
 
 // 获取最新分类排行

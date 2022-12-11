@@ -4,6 +4,7 @@ const {
   fetchPlayUrl,
   fetchRecommendById,
   fetchReplay,
+  fetchVideoShot,
   fetchBarrage
 } = require("../api");
 const { parseString } = require("xml2js");
@@ -50,6 +51,22 @@ router.get("/av/play_url", (req, res, next) => {
 
 router.get("/av/recommend/:aId", (req, res, next) => {
   fetchRecommendById(req.params.aId).then((data) => {
+    let resData = {
+      code: "1",
+      msg: "success"
+    }
+    if (data.code === 0) {
+      resData.data = data.data;
+    } else {
+      resData.code = "0";
+      resData.msg = "fail";
+    }
+    res.send(resData);
+  }).catch(next);
+});
+router.get("/av/fetchVideoShot/:aId", (req, res, next) => {
+  console.log(req.params.aId,'req.params.aId')
+  fetchVideoShot(req.params.aId).then((data) => {
     let resData = {
       code: "1",
       msg: "success"
