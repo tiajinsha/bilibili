@@ -1,14 +1,15 @@
 import Menu from "@/components/Menu/Menu";
 import MenuItem from "@/components/Menu/menuItem";
-import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
 import { createVideo, Video } from "@/models";
 import { inject, observer } from "mobx-react";
 import React, { createContext } from "react";
 import styles from "./VidoePlayer.module.scss"
-import { getRecommendVides, getComments } from "@/api/index";
+import { getRecommendVides, getComments, getBarrages } from "@/api/index";
 import BIcon from "@/components/Button/BIcon";
 import { Spin } from "antd";
 import VideoSlider from "./VideoSlider";
+import Artplayer from "artplayer"
+import artplayerPluginDanmuku from "artplayer-plugin-danmuku"
 import VideoComment from "./VideoComment";
 export interface VideoContext {
     checkVidoe?: (aId: number) => void;
@@ -26,7 +27,8 @@ interface VideoInfoState {
     Video: Video,
     tabIndex: number,
     RightMsgVisable: boolean,
-    recommandVideo: Video[]
+    recommandVideo: Video[],
+    art: any
 }
 
 //解决重复请求问题
@@ -35,7 +37,7 @@ var first: Boolean = true
 @inject('indexStore')
 @observer
 export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfoState> {
-    private VideoRef: React.RefObject<VideoPlayer>;
+    private ArtPlayerRef: React.RefObject<any>;
     constructor(props) {
         super(props)
         this.state = {
@@ -43,13 +45,16 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
             Video: null,
             tabIndex: 0,
             RightMsgVisable: true,
-            recommandVideo: null
+            recommandVideo: null,
+            art: null
         }
-        this.VideoRef = React.createRef();
+        this.ArtPlayerRef = React.createRef()
     }
 
     componentWillUnmount(): void {
-
+        if (this.state.art && this.state.art.destroy) {
+            this.state.art.destroy();
+        }
     }
     async componentWillMount() {
         first = true
@@ -66,13 +71,61 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
         this.setState({
             loading: false,
         })
+        let BarragesList = []
         let res = await this.props.VideoDetail.getVideoDetail(aId)
         let result = await getRecommendVides(res.aId)
-        // let msgresult = await getComments(res.aId, 0)
+        let Barrages = await getBarrages(res.cId)
+        if (Barrages.msg === "success" && Barrages.data.length) {
+            Barrages.data.forEach(element => {
+                console.log(element.type)
+                BarragesList.push({
+                    text: element.content, // 弹幕文本
+                    time: Number(element.time), // 发送时间，单位秒
+                    color: '#' + Number(element.decimalColor).toString(16), // 弹幕局部颜色
+                    border: false, // 是否显示描边
+                    mode: element.type === '1' ? 0 : 1, // 弹
+                })
+            });
+
+        }
+        console.log(BarragesList, 'Barrages')
+        var art = null
         this.setState({
             loading: true,
             Video: res,
-            recommandVideo: result.data.map((item) => createVideo(item))
+            recommandVideo: result.data.map((item) => createVideo(item)),
+            art: art = new Artplayer({
+                url: res.url,
+                container: this.ArtPlayerRef.current,
+                autoplay: true,
+                poster: res.pic,
+                setting: true,
+                playbackRate: true,
+                theme: '#fb7299',
+                fullscreen: true,
+                fullscreenWeb: true,
+                miniProgressBar: true,
+                plugins: [
+                    artplayerPluginDanmuku({
+                        danmuku: BarragesList,
+                        speed: 5, // 弹幕持续时间，单位秒，范围在[1 ~ 10]
+                        opacity: 1, // 弹幕透明度，范围在[0 ~ 1]
+                        fontSize: 20, // 字体大小，支持数字和百分比
+                        color: '#FFFFFF', // 默认字体颜色
+                        mode: 0, // 默认模式，0-滚动，1-静止
+                        margin: [10, '25%'], // 弹幕上下边距，支持数字和百分比
+                        antiOverlap: true, // 是否防重叠
+                        useWorker: true, // 是否使用 web worker
+                        synchronousPlayback: true, // 是否同步到播放速度
+                        filter: (danmu) => danmu.text.length < 50, // 弹幕过滤函数，返回 true 则可以发送
+                        lockTime: 5, // 输入框锁定时间，单位秒，范围在[1 ~ 60]
+                        maxLength: 100, // 输入框最大可输入的字数，范围在[0 ~ 500]
+                        minWidth: 200, // 输入框最小宽度，范围在[0 ~ 500]，填 0 则为无限制
+                        maxWidth: 400, // 输入框最大宽度，范围在[0 ~ Infinity]，填 0 则为 100% 宽度
+                        theme: 'dark', // 输入框自定义挂载时的主题色，默认为 dark，可以选填亮色 light
+                    }),
+                ],
+            })
         })
     }
     closeMsg = () => {
@@ -114,20 +167,7 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
                 </div>
                 <div className={styles['vidoe-content']}>
                     <div className={styles['video']}>
-                        {
-                            loading && Video.aId ? <VideoPlayer
-                                ref={this.VideoRef}
-                                autoPlay
-                                video={{
-                                    aId: Video.aId,
-                                    cId: Video.cId,
-                                    title: Video.title,
-                                    cover: Video.pic,
-                                    duration: Video.duration,
-                                    url: Video.url
-                                }} /> : null
-                        }
-
+                        <div style={{ width: "100%", height: "100%" }} ref={this.ArtPlayerRef}></div>
                         <div style={iconCloseStyle} className={styles['right-close']} onClick={this.closeMsg} >
                             <BIcon iconName="fanhui" ></BIcon>
                         </div>

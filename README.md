@@ -62,7 +62,7 @@ API 源代码来自 [fython/BilibiliAPIDocs](https://github.com/fython/BilibiliA
 
 <img src="images/IMG_37152.JPG" style="width:100%;height:100%" alt="Logo" width="250" height="156">
 
-<!-- MARKDOWN LINKS & IMAGES -->
+<!-- MARKDOWN LINKS & IMAGES文档 -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [album-screenshot]: images/home.png
