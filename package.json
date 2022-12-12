@@ -28,7 +28,7 @@
         "url": "http://127.0.0.1:25566/"
       }
     ],
-    "productName": "electron-react-admin",
+    "productName": "bilibili",
     "appId": "org.simulatedgreg.electron-react",
     "directories": {
       "output": "build"

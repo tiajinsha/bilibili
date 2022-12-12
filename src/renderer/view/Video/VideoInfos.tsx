@@ -104,7 +104,7 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
         }
         let imgs = []
         shots.data.image.map(async (item) => {
-            const res = await axios.get(item, {
+            const res = await axios.get('http:' + item, {
                 responseType: 'blob'
             })
             imgs.push(window.URL.createObjectURL(new Blob([res.data], {
