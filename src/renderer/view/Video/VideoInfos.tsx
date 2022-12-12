@@ -8,8 +8,8 @@ import { getRecommendVides, getComments, getBarrages, getFetchVideoShot } from "
 import BIcon from "@/components/Button/BIcon";
 import { Spin } from "antd";
 import VideoSlider from "./VideoSlider";
-import Artplayer from "artplayer"
-import artplayerPluginDanmuku from "artplayer-plugin-danmuku"
+import axios from "axios";
+import Player from "xgplayer"
 import VideoComment from "./VideoComment";
 export interface VideoContext {
     checkVidoe?: (aId: number) => void;
@@ -38,6 +38,7 @@ var first: Boolean = true
 @observer
 export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfoState> {
     private ArtPlayerRef: React.RefObject<any>;
+    private play: React.RefObject<any>;
     constructor(props) {
         super(props)
         this.state = {
@@ -49,11 +50,12 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
             art: null
         }
         this.ArtPlayerRef = React.createRef()
+        this.play = React.createRef()
     }
 
     componentWillUnmount(): void {
-        if (this.state.art && this.state.art.destroy) {
-            this.state.art.destroy();
+        if (this.play.current && this.play.current.destroy) {
+            this.play.current.destroy(true);
         }
     }
     async componentWillMount() {
@@ -80,57 +82,65 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
         if (Barrages.msg === "success" && Barrages.data.length) {
             Barrages.data.forEach(element => {
                 BarragesList.push({
-                    text: element.content, // 弹幕文本
-                    time: Number(element.time), // 发送时间，单位秒
-                    color: '#' + Number(element.decimalColor).toString(16), // 弹幕局部颜色
-                    border: false, // 是否显示描边
-                    mode: element.type === '1' ? 0 : 1, // 弹
+                    duration: 8000,
+                    txt: element.content, // 弹幕文本
+                    start: Number(element.time) * 1000, // 发送时间，单位秒
+                    mode: element.type === '1' ? 'scroll' : 'top', // 弹top
+                    id: element.content + '-' + Number(element.time) * 1000,
+                    style: {
+                        color: '#' + Number(element.decimalColor).toString(16),
+                        fontSize: '20px',
+                        borderRadius: '50px',
+                        padding: '5px 11px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                    }
                 })
             });
 
         }
-        var art = null
+        if (this.play.current && this.play.current.destroy) {
+            this.play.current.destroy(true);
+            this.play.current = null
+        }
+        let imgs = []
+        shots.data.image.map(async (item) => {
+            const res = await axios.get(item, {
+                responseType: 'blob'
+            })
+            imgs.push(window.URL.createObjectURL(new Blob([res.data], {
+                type: res.data.type + ';charset=utf-8'
+            })))
+        })
+        this.play.current = new Player({
+            el: this.ArtPlayerRef.current,
+            autoplay: true,
+            volume: 0.3,
+            url: res.url,
+            poster: res.pic,
+            width: this.ArtPlayerRef.current.innerWidth,
+            height: this.ArtPlayerRef.current.innerHeight,
+            playsinline: true,
+            whitelist: ['*'],
+            thumbnail: shots.data && shots.data.image.length ? {
+                pic_num: shots.data.index.length ? shots.data.index.length : 100,
+                width: shots.data.img_x_size,
+                height: shots.data.img_y_size,
+                col: 10,
+                row: 10,
+                urls: imgs,
+            } : null,
+            danmu: {
+                comments: BarragesList,
+                area: {
+                    start: 0,
+                    end: 0.5
+                }
+            },
+        });
         this.setState({
             loading: true,
             Video: res,
             recommandVideo: result.data.map((item) => createVideo(item)),
-            art: art = new Artplayer({
-                url: res.url,
-                container: this.ArtPlayerRef.current,
-                autoplay: true,
-                poster: res.pic,
-                setting: true,
-                playbackRate: true,
-                theme: '#fb7299',
-                fullscreen: true,
-                fullscreenWeb: true,
-                miniProgressBar: true,
-                thumbnails: shots.data && shots.data.image.length ? {
-                    url: shots.data.image[0],
-                    number: shots.data.index.length,
-                    column: shots.data.img_x_len,
-                } : null,
-                plugins: [
-                    artplayerPluginDanmuku({
-                        danmuku: BarragesList,
-                        speed: 5, // 弹幕持续时间，单位秒，范围在[1 ~ 10]
-                        opacity: 1, // 弹幕透明度，范围在[0 ~ 1]
-                        fontSize: 20, // 字体大小，支持数字和百分比
-                        color: '#FFFFFF', // 默认字体颜色
-                        mode: 0, // 默认模式，0-滚动，1-静止
-                        margin: [10, '25%'], // 弹幕上下边距，支持数字和百分比
-                        antiOverlap: true, // 是否防重叠
-                        useWorker: true, // 是否使用 web worker
-                        synchronousPlayback: true, // 是否同步到播放速度
-                        filter: (danmu) => danmu.text.length < 50, // 弹幕过滤函数，返回 true 则可以发送
-                        lockTime: 5, // 输入框锁定时间，单位秒，范围在[1 ~ 60]
-                        maxLength: 100, // 输入框最大可输入的字数，范围在[0 ~ 500]
-                        minWidth: 200, // 输入框最小宽度，范围在[0 ~ 500]，填 0 则为无限制
-                        maxWidth: 400, // 输入框最大宽度，范围在[0 ~ Infinity]，填 0 则为 100% 宽度
-                        theme: 'dark', // 输入框自定义挂载时的主题色，默认为 dark，可以选填亮色 light
-                    }),
-                ],
-            })
         })
     }
     closeMsg = () => {
