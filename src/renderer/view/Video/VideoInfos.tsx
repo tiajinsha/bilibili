@@ -2,7 +2,7 @@ import Menu from "@/components/Menu/Menu";
 import MenuItem from "@/components/Menu/menuItem";
 import { createVideo, Video } from "@/models";
 import { inject, observer } from "mobx-react";
-import React, { createContext } from "react";
+import React, { createContext, useMemo } from "react";
 import styles from "./VidoePlayer.module.scss"
 import { getRecommendVides, getComments, getBarrages, getFetchVideoShot } from "@/api/index";
 import BIcon from "@/components/Button/BIcon";
@@ -164,9 +164,10 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
     }
     checkVidoe = (aId) => {
         this.loadData(aId)
+        console.log(process.platform)
     }
     passedContext: VideoContext = {
-        checkVidoe: this.checkVidoe
+        checkVidoe: this.checkVidoe,
     }
     render(): React.ReactNode {
         const { loading, Video, RightMsgVisable, recommandVideo, tabIndex } = this.state
@@ -175,7 +176,7 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
         return (
             <div className={styles['video-player']}>
                 <div className={styles['video-header']}>
-                    <div className={styles['gohome']} onClick={this.goHome}>
+                    <div className={styles['gohome']} onClick={this.goHome} style={{ marginLeft: process.platform == 'win32' ? "10px" : "100px" }}>
                         <span className="iconfont icon-shouye"></span>
                         <div>回到主界面</div>
                     </div>

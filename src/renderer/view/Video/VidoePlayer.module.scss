@@ -18,7 +18,6 @@
       padding-left: 10px;
       padding-right: 10px;
       border-radius: 9px;
-      margin-left: 100px;
       font-weight: 600;
       color: white;
       display: flex;
@@ -63,7 +62,7 @@
     .video-info {
       /*    background: #17181a; */
       overflow-x: hidden;
-      transition: flex 0.5s ease;
+      transition: flex 0.1s ease;
       overflow-y: scroll;
       .video-info-tab {
         width: 100%;
