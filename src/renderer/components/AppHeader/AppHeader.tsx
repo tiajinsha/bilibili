@@ -16,7 +16,7 @@ const AppHeader = () => {
     <div className="appHeader">
       <div className={classNames('logoWrapper')}>
         <div className="logo FlexCenter">
-          <BIcon iconName="bilibili"  size={30} active></BIcon>
+          <BIcon iconName="bilibili" size={30} active></BIcon>
         </div>
         {
           !Focus ? <div className="menuWrapper" >
