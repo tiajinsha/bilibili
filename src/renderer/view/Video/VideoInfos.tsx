@@ -10,6 +10,7 @@ import { Spin } from "antd";
 import VideoSlider from "./VideoSlider";
 import axios from "axios";
 import Player from "xgplayer"
+import { resizeImage } from "../../utils/index"
 import VideoComment from "./VideoComment";
 export interface VideoContext {
     checkVidoe?: (aId: number) => void;
@@ -28,7 +29,8 @@ interface VideoInfoState {
     tabIndex: number,
     RightMsgVisable: boolean,
     recommandVideo: Video[],
-    art: any
+    art: any,
+    imgs: []
 }
 
 //解决重复请求问题
@@ -39,6 +41,7 @@ var first: Boolean = true
 export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfoState> {
     private ArtPlayerRef: React.RefObject<any>;
     private play: React.RefObject<any>;
+    private mediaSource: React.RefObject<any>;
     constructor(props) {
         super(props)
         this.state = {
@@ -47,10 +50,12 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
             tabIndex: 0,
             RightMsgVisable: true,
             recommandVideo: null,
-            art: null
+            art: null,
+            imgs: []
         }
         this.ArtPlayerRef = React.createRef()
         this.play = React.createRef()
+        this.mediaSource = React.createRef()
     }
 
     componentWillUnmount(): void {
@@ -75,6 +80,8 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
         })
         let BarragesList = []
         let res = await this.props.VideoDetail.getVideoDetail(aId)
+        console.log(res.url)
+        // let videoSounce = await this.download(res)
         let result = await getRecommendVides(res.aId)
         let Barrages = await getBarrages(res.cId)
         let shots = await getFetchVideoShot(aId)
@@ -102,29 +109,33 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
             this.play.current.destroy(true);
             this.play.current = null
         }
-        let imgs = []
-        shots.data.image.map(async (item) => {
-            const res = await axios.get('http:' + item, {
-                responseType: 'blob'
-            })
-            imgs.push(window.URL.createObjectURL(new Blob([res.data], {
-                type: res.data.type + ';charset=utf-8'
-            })))
+        let imgs = [] as any
+
+        const imglistBlob = await Promise.all(shots.data.image.map((item) => axios.get('http:' + item, {
+            responseType: 'blob'
         })
+        ))
+
+        const responseBlob = await Promise.all(imglistBlob.map((item) => resizeImage(item.data)))
+        responseBlob.forEach((item:Blob)=>{
+            imgs.push(window.URL.createObjectURL(item))
+        })
+
         this.play.current = new Player({
             el: this.ArtPlayerRef.current,
             autoplay: true,
-            volume: 0.3,
+            volume: 1,
             url: res.url,
             poster: res.pic,
             width: this.ArtPlayerRef.current.innerWidth,
             height: this.ArtPlayerRef.current.innerHeight,
             playsinline: true,
+            closePlayerBlur: true,
             whitelist: ['*'],
             thumbnail: shots.data && shots.data.image.length ? {
                 pic_num: shots.data.index.length ? shots.data.index.length : 100,
-                width: shots.data.img_x_size,
-                height: shots.data.img_y_size,
+                width: shots.data.img_x_size / 2,
+                height: shots.data.img_y_size / 2,
                 col: 10,
                 row: 10,
                 urls: imgs,
@@ -146,6 +157,20 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
     closeMsg = () => {
         this.setState({
             RightMsgVisable: !this.state.RightMsgVisable
+        })
+    }
+    download = (res) => {
+        return new Promise((resolve, reject) => {
+            var xhr = new XMLHttpRequest;
+            xhr.open('get', res.url);
+            xhr.responseType = 'blob';
+            xhr.onload = function () {
+                resolve(xhr.response)
+            };
+            xhr.onerror = function (err) {
+                reject(err)
+            }
+            xhr.send();
         })
     }
     tabClick = (index: any) => {
@@ -170,7 +195,7 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
         checkVidoe: this.checkVidoe,
     }
     render(): React.ReactNode {
-        const { loading, Video, RightMsgVisable, recommandVideo, tabIndex } = this.state
+        const { loading, Video, RightMsgVisable, recommandVideo, tabIndex, imgs } = this.state
         const rightClose = { flex: RightMsgVisable ? "0 0 400px" : "0 0 0" }
         const iconCloseStyle = { transform: RightMsgVisable ? "rotate(180deg)" : "rotate(0deg)" }
         return (

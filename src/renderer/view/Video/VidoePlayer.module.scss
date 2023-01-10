@@ -1,4 +1,10 @@
 @import "@/assets/style/index.scss";
+.xgplayer-progress-thumbnail{
+  background: red;
+  display: none !important;
+  z-index: -1;
+  border-radius: 100px;
+}
 .video-player {
   width: 100vw;
   height: 100vh;

@@ -36,7 +36,7 @@ const AppHeader = () => {
             </Menu>
           </div> : null
         }
-
+              
       </div>
       <SearchWrapper Focus={Focus} onFocusChange={onFocusChange} ></SearchWrapper>
     </div>

@@ -16,6 +16,7 @@ interface VideoPlayerProps {
 }
 
 const VideoItem: React.FC<VideoPlayerProps> = ({ video }) => {
+  
   const ref = useRef(null);
   const onMouseLeaveEvent = () => {
     ref.current.onMouseLeaveEvent();

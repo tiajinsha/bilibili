@@ -50,3 +50,24 @@ export const getPubdate = (timestamp) => {
     if (second < 10) { second = 0 + second }
     return year + '-' + month + '-' + date + ' ' + hours + ':' + minute + ':' + second
   }
+
+
+  export function resizeImage(blob) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = URL.createObjectURL(blob);
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = img.width * 0.5;
+        canvas.height = img.height * 0.5;
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob((resizedBlob) => {
+          resolve(resizedBlob);
+        });
+      };
+      img.onerror = (error) => {
+        reject(error);
+      };
+    });
+  }
