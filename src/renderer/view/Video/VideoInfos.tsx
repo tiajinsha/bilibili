@@ -80,12 +80,9 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
         })
         let BarragesList = []
         let res = await this.props.VideoDetail.getVideoDetail(aId)
-        console.log(res.url)
-        // let videoSounce = await this.download(res)
         let result = await getRecommendVides(res.aId)
         let Barrages = await getBarrages(res.cId)
         let shots = await getFetchVideoShot(aId)
-        console.log(shots, 'shots')
         if (Barrages.msg === "success" && Barrages.data.length) {
             Barrages.data.forEach(element => {
                 BarragesList.push({
@@ -111,13 +108,10 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
         }
         let imgs = [] as any
 
-        const imglistBlob = await Promise.all(shots.data.image.map((item) => axios.get('http:' + item, {
-            responseType: 'blob'
-        })
-        ))
+        const imglistBlob = await Promise.all(shots.data.image.map((item) => axios.get('http:' + item, {responseType: 'blob'})))
 
         const responseBlob = await Promise.all(imglistBlob.map((item) => resizeImage(item.data)))
-        responseBlob.forEach((item:Blob)=>{
+        responseBlob.forEach((item: Blob) => {
             imgs.push(window.URL.createObjectURL(item))
         })
 
@@ -134,8 +128,8 @@ export default class VideoInfo extends React.Component<VideoInfoProps, VideoInfo
             whitelist: ['*'],
             thumbnail: shots.data && shots.data.image.length ? {
                 pic_num: shots.data.index.length ? shots.data.index.length : 100,
-                width: shots.data.img_x_size / 2,
-                height: shots.data.img_y_size / 2,
+                width: shots.data.img_x_size / 2.5,
+                height: shots.data.img_y_size / 2.5,
                 col: 10,
                 row: 10,
                 urls: imgs,

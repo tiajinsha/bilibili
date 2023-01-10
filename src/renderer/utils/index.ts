@@ -59,8 +59,8 @@ export const getPubdate = (timestamp) => {
       img.onload = () => {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
-        canvas.width = img.width * 0.5;
-        canvas.height = img.height * 0.5;
+        canvas.width = img.width * 0.4;
+        canvas.height = img.height * 0.4;
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         canvas.toBlob((resizedBlob) => {
           resolve(resizedBlob);
