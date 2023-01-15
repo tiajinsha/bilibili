@@ -129,7 +129,7 @@ const Channal = (props) => {
         return `${picURL}?pic=${url}${format + suffix}`;
     }
 
-    const VideoElements =  ()=>  indexVideoObj[select]?.map((video, index) => {
+    const VideoElements = () => indexVideoObj[select]?.map((video, index) => {
         if (video.pic.indexOf('@320w_200h') === -1) {
             video.pic = getPicUrl(video.pic, "@320w_200h");
         }
