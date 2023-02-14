@@ -19,9 +19,9 @@
 ## ✨ 特性
 
 - ✅ 使用 react + Typescript 全家桶开发
-- 📺 支持bilibili视频播放和直播
+- 📺 支持 bilibili 视频播放和直播
 - 📃 支持鼠标悬停预览视频效果
-- 📃 支持B站特色弹幕
+- 📃 支持 B 站特色弹幕
 - 🛠 electron 后台线程集成 bilibili-api。
 - 🖥️ 方便二次开发，其他功能开发中
 
@@ -53,15 +53,19 @@ yarn build
 
 API 灵感来自 [fython/BilibiliAPIDocs](https://github.com/fython/BilibiliAPIDocs)
 
-# 高仿B站hover视频预览+弹幕
+# 高仿 B 站 hover 视频预览+弹幕
+
 ![artist][artist-screenshot]
+
 # 视频详情
+
 ![explore][explore-screenshot]
+
 # 直播详情
+
 ![explore][explore-live]
 
 <img src="images/IMG_37152.JPG" style="width:100%;height:100%" alt="Logo" width="250" height="156">
-
 
 [album-screenshot]: images/home.png
 [artist-screenshot]: images/hover.png
